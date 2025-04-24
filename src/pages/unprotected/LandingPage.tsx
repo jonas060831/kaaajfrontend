@@ -1,4 +1,5 @@
 import Carousel from "../../components/Carousel/Carousel"
+import GenerateAdFlow from "../../components/GenerateAdFlow/GenerateAdFlow"
 import ServiceOverview from "../../components/ServiceOverview/ServiceOverview"
 
 import { slides } from "../../datas/carousel/slides"
@@ -18,6 +19,8 @@ const LandingPage = () => {
 
       <main>
         <ServiceOverview />
+
+        <GenerateAdFlow />
       </main>
     </>
   )

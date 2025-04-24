@@ -1,0 +1,20 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+    border: 0px;
+    cursor: pointer;
+    font-size: larger;
+    border-radius: 3px;
+    color: white;
+    font-family: 'Varela Round';
+}
+.button:hover {
+    background-color: rgb(253, 172, 86);
+}
+
+.auto {
+    background-color: var(--navbar-bg);
+}
