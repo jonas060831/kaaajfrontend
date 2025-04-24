@@ -24,6 +24,29 @@
     border-radius: 20px;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+  
+  .slide1 {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 0.2s;
+  }
+  .slide1_image {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 0.2s;
+  }
+  
+
 /* Desktop only */
 @media (min-width: 821px) { }
 
@@ -54,3 +77,5 @@
         display: none;
     }
 }
+
+

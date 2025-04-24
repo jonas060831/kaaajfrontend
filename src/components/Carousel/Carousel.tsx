@@ -111,6 +111,7 @@ const Carousel: React.FC<CarouselProps> = ({
         bottom: '15px',
         width: '100%',
         display: 'flex',
+        alignItems: 'center',
         justifyContent: 'center',
         gap: '10px',
       }}>
@@ -122,7 +123,7 @@ const Carousel: React.FC<CarouselProps> = ({
               width: currentIndex === idx ? '14px' : '10px',
               height: currentIndex === idx ? '14px' : '10px',
               borderRadius: '50%',
-              backgroundColor: currentIndex === idx ? '#333' : '#aaa',
+              backgroundColor: currentIndex === idx ? '#fdac56' : '#bfc0c2',
               cursor: 'pointer',
               transition: 'all 0.3s ease-in-out',
             }}

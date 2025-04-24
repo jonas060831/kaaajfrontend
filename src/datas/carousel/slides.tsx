@@ -10,7 +10,7 @@ export const slides = [
             Next-Gen <br />
             Advertising <br />
           </p>
-          <p style={{ color: 'rgb(100, 100, 100)', fontFamily: 'Raleway', fontWeight: '100', fontSize: '18px' }}>
+          <p style={{ color: 'var(--font-color)', fontFamily: 'Raleway', fontWeight: '100', fontSize: '18px' }}>
           We fuse design, data and digital strategy <br />
           to elevate your brand in the new era.
           </p>
