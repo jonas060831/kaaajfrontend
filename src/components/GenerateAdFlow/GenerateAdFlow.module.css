@@ -8,7 +8,7 @@
     margin: 0px auto;
     margin-top: 20rem;
     font-family: 'Orbitron';
-    border-bottom-right-radius: 13vw;
+    border-bottom-right-radius: 5vw;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -55,6 +55,15 @@
     align-self: center;
 }
 
+.map_location_finder {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    border-top-left-radius: 18vw;
+    border-bottom-right-radius: 10vw;
+    filter: drop-shadow(1px 1px 6px orange) brightness(60%);
+}
+
 /* Desktop only */
 @media (min-width: 821px) { }
 
@@ -76,9 +85,6 @@
     .steps_container {
         width: 100%;
         
-    }
-    .map_location_finder {
-        display: none;
     }
     .step_item {
         width: 100%;

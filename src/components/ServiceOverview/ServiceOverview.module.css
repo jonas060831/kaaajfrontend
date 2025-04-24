@@ -4,7 +4,7 @@
     color: var(--dark-font-color);
     text-align: center;
     box-shadow: 0 0 30px rgba(252, 147, 0, 0.08);
-    background: url('/src/assets/images/aarlo/aarlo_picture.png');
+    background: url('/images/aarlo/aarlo_picture.png');
     background-color: var(--dark-ui-bg);
     object-fit: fill;
     margin: 8rem 0rem;

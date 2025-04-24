@@ -14,7 +14,7 @@
 }
 
 .slide1_image {
-    background-image: url('../../src/assets/images/slides/slide1_image.png');
+    background-image: url('/images/slides/slide1_image.png');
     background-size: cover;
     background-position: center;
     filter: drop-shadow(4px 4px 12px rgba(0, 0, 0, 0.332));
