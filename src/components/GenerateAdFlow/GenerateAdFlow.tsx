@@ -37,7 +37,11 @@ const GenerateAdFlow = () => {
             </div> {/*  steps */}
             
             <div style={{ width: '55%' }}>
-              <img className={styles.map_location_finder} src="src/assets/images/map/map_darkmode.jpeg" alt="" style={{ height: '100%', width: '100%', objectFit: 'fill', borderTopLeftRadius: '18vw', borderBottomRightRadius: '10vw', filter: 'drop-shadow(1px 1px 6px orange) brightness(60%)' }}/>
+              <img
+               className={styles.map_location_finder}
+               src={undefined}
+               alt=""
+               />
             </div>
 
           </div>
