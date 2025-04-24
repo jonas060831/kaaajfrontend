@@ -1,12 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Varela+Round&display=swap');
+
 /* just this since were using normalize.css */
 * {
   box-sizing: border-box;
+}
+
+a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(253, 172, 86);
+}
+
+.active {
+  color: rgb(253, 172, 86);
 }
 
 :root {
   /* background */
   --light-bg: #F3EFE8;
   --dark-bg: #282c34;
+
+  /* navbar */
+  --light-navbar-bg: #17235f;
+  --dark-navbar-bg: #282c34;
   
   /* font color */
   --light-font-color: #000;
@@ -22,6 +41,7 @@
 }
 
 body {
+  font-family: 'Varela Round';
   background-color: var(--bg);
   color: var(--font-color);
 }
@@ -42,17 +62,27 @@ body {
 /* USER PREFERENCE BASE ON DEVICE SETTING */
 
 @media (prefers-color-scheme: dark) {
+  /* temporary */
   :root {
       --bg: var(--dark-bg);
+      --navbar-bg: var(--dark-navbar-bg);
       --font-color: var(--dark-font-color);
       --ui-background-color: var(--dark-ui-bg);
       --button-bg-color: var(--dark-button-bg-color);
   }
+  /* :root {
+    --bg: var(--light-bg);
+    --navbag-bg: var(--light-navbar-bg);
+    --font-color: var(--light-font-color);
+    --ui-background-color: var(--light-ui-bg);
+    --button-bg-color: var(--light-button-bg-color);
+  } */
 }
 
 @media (prefers-color-scheme: light) {
   :root {
       --bg: var(--light-bg);
+      --navbar-bg: var(--light-navbar-bg);
       --font-color: var(--light-font-color);
       --ui-background-color: var(--light-ui-bg);
       --button-bg-color: var(--light-button-bg-color);

@@ -6,13 +6,16 @@ import App from './App.tsx'
 
 // use normalize.css
 import 'normalize.css'
+import { AuthProvider } from './contexts/AuthContext.tsx'
 
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 )

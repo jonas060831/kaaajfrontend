@@ -14,10 +14,13 @@
   "dependencies": {
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
+    "framer-motion": "^12.8.0",
     "normalize.css": "^8.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^6.30.0"
+    "react-router": "^6.30.0",
+    "react-router-dom": "^6.30.0",
+    "react-simple-typewriter": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
@@ -35,6 +38,7 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
     "vite": "^6.3.1",
+    "vite-plugin-svgr": "^4.3.0",
     "vitest": "^3.0.1"
   }
 }
