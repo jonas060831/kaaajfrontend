@@ -28,7 +28,7 @@ a {
   --dark-font-color: #fff;
 
   /* ui background color */
-  --dark-ui-bg: #3c3c3c;
+  --dark-ui-bg: #222529;
   --light-ui-bg: #fff;
 
   /* button background color */
@@ -58,7 +58,6 @@ body {
 /* USER PREFERENCE BASE ON DEVICE SETTING */
 
 @media (prefers-color-scheme: dark) {
-  /* correct root */
   :root {
       --bg: var(--dark-bg);
       --navbar-bg: var(--dark-navbar-bg);
@@ -66,15 +65,6 @@ body {
       --ui-background-color: var(--dark-ui-bg);
       --button-bg-color: var(--dark-button-bg-color);
   }
-
-  /* temporary */
-  /* :root {
-    --bg: var(--light-bg);
-    --navbar-bg: var(--light-navbar-bg);
-    --font-color: var(--light-font-color);
-    --ui-background-color: var(--light-ui-bg);
-    --button-bg-color: var(--light-button-bg-color);
-  } */
 }
 
 @media (prefers-color-scheme: light) {
