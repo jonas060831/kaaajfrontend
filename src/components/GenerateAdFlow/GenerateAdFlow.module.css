@@ -63,12 +63,24 @@
 
 /* Mobile only */
 @media (min-width: 320px) and (max-width: 480px) {
-
+    .container {
+        text-align: center;
+    }
     .steps_and_map_container {
         display: block;
         width: 100%;
-        background-color: red;
         align-items: center;
         justify-content: center;
+        
+    }
+    .steps_container {
+        width: 100%;
+        
+    }
+    .map_location_finder {
+        display: none;
+    }
+    .step_item {
+        width: 100%;
     }
 }
