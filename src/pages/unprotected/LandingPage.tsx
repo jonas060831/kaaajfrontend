@@ -1,4 +1,5 @@
 import Carousel from "../../components/Carousel/Carousel"
+import ServiceOverview from "../../components/ServiceOverview/ServiceOverview"
 
 import { slides } from "../../datas/carousel/slides"
 const LandingPage = () => {
@@ -14,6 +15,10 @@ const LandingPage = () => {
          interval={8000}
         />
       </header>
+
+      <main>
+        <ServiceOverview />
+      </main>
     </>
   )
 }
