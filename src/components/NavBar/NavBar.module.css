@@ -17,7 +17,14 @@
 .company_logo {
     font-family: 'Orbitron';
     font-size: 33px;
+    padding: 0.8rem;
+    border-radius: 10px;
     cursor: pointer;
+}
+
+.company_logo:hover {
+    background-color: rgba(255, 255, 255, 0.067);
+    
 }
 
 .links {
@@ -39,6 +46,8 @@
 .links li:hover {
     background-color: rgba(255, 255, 255, 0.067);
     border-radius: 0.5rem;
+    color: rgb(253, 172, 86);
+    cursor: pointer;
 }
 
 .menu_container {
