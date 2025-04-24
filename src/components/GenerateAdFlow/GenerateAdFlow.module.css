@@ -55,6 +55,10 @@
     align-self: center;
 }
 
+.map_location_finder_container {
+    width: 55%;
+}
+
 .map_location_finder {
     height: 100%;
     width: 100%;
@@ -74,6 +78,7 @@
 @media (min-width: 320px) and (max-width: 480px) {
     .container {
         text-align: center;
+        margin-top: 10rem;
     }
     .steps_and_map_container {
         display: block;
@@ -83,10 +88,14 @@
         
     }
     .steps_container {
-        width: 100%;
-        
+        width: 90%;
+        margin: 0px auto;
+        text-align: left;
     }
     .step_item {
         width: 100%;
+    }
+    .map_location_finder_container {
+        width: 0%;
     }
 }
