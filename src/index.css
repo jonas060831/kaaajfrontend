@@ -14,6 +14,10 @@ a {
   color: rgb(253, 172, 86);
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 :root {
   /* background */
   --light-bg: #F3EFE8;

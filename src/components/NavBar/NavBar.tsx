@@ -86,7 +86,6 @@ const NavBar = () => {
              onClick={toggleRightMenu}
             />
           </section>
-
         </section>
       </nav>
 

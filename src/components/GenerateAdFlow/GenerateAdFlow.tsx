@@ -15,12 +15,12 @@ const GenerateAdFlow = () => {
   return (
     <div className={styles.container}>
 
-          {/* header */}
+          
           <div className={styles.header}>
             <p>Start Your campaign today</p>
           </div>
 
-          {/* 2 column */}
+          
           <div className={styles.steps_and_map_container}>
 
             <div className={styles.steps_container}>
@@ -29,12 +29,12 @@ const GenerateAdFlow = () => {
 
                   {step.number && <div className={styles.number_bullet} >{step.number}</div>}
                   
-                  <div style={{ lineHeight: '2'}}> {step.content}</div>
+                  <div style={{ lineHeight: '2', marginBottom: '2rem'}}> {step.content}</div>
 
                 </div>
               ))}
               
-            </div> {/*  steps */}
+            </div>
             
             <div className={styles.map_location_finder_container}>
               <img

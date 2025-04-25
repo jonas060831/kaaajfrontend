@@ -11,9 +11,9 @@
     font-family: 'Varela Round';
 }
 .button:hover {
-    background-color: rgb(253, 172, 86);
+    opacity: 0.8;
 }
 
 .auto {
-    background-color: var(--navbar-bg);
+    background-color: var(--button-bg-color);
 }

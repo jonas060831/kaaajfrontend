@@ -7,6 +7,7 @@ import Careers from '../../assets/svgs/careers.svg?react';
 import About from '../../assets/svgs/about.svg?react';
 import Contact from '../../assets/svgs/contact.svg?react';
 import SignIn from '../../assets/svgs/signalRight.svg?react';
+import Bell from '../../assets/svgs/bell.svg?react';
 
 type IconProps = {
   category: string;
@@ -24,7 +25,8 @@ const iconMap: { [key: string]: JSX.Element } = {
   Careers: <Careers />,
   About: <About />,
   Contact: <Contact />,
-  SignIn: <SignIn />
+  SignIn: <SignIn />,
+  Bell: <Bell />
 
 };
 
