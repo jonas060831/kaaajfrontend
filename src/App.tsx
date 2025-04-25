@@ -10,6 +10,7 @@ import SignInPage from './pages/unprotected/SignInPage';
 import ContactPage from './pages/unprotected/ContactPage';
 
 import styles from './App.module.css';
+import AarloChatButton from './components/AarloButton/AarloChatButton';
 
 const App = () => {
   const { user } = useAuthContext();
@@ -32,6 +33,7 @@ const App = () => {
         </Routes>
       </main>
       <Footer />
+      <AarloChatButton />
     </div>
   );
 };

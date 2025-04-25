@@ -1,0 +1,48 @@
+/* Add an overlay to dim the screen */
+.dimOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dims the screen */
+  z-index: 998; /* Ensures it stays below the button */
+  display: none; /* Hidden by default */
+}
+
+.dimOverlay.show {
+  display: block; /* Show the overlay when the 'show' class is added */
+}
+
+.chatButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--button-bg-color);
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 999;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for larger screens */
+.chatButton:hover {
+  opacity: 0.8;
+  box-shadow: 0 8px 16px rgba(255, 170, 1, 0.7);
+}
+
+/* Media query to disable hover effect on mobile */
+@media (max-width: 768px) {
+  .chatButton:hover {
+    opacity: 1; /* Reset opacity */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Reset shadow */
+  }
+}
