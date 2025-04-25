@@ -29,7 +29,7 @@ const GenerateAdFlow = () => {
 
                   {step.number && <div className={styles.number_bullet} >{step.number}</div>}
                   
-                  <div style={{ lineHeight: '2', marginBottom: '2rem'}}> {step.content}</div>
+                  <div> {step.content}</div>
 
                 </div>
               ))}

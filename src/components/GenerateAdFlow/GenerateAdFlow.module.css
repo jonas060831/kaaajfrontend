@@ -8,7 +8,7 @@
     margin: 0px auto;
     margin-top: 20rem;
     font-family: 'Orbitron';
-    border-bottom-right-radius: 5vw;
+    border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -40,6 +40,8 @@
 .step_item {
     display: flex;
     width: 330px;
+    height: 96px;
+    align-items: center;
     gap: 1rem;
     white-space: pre-wrap;
 }
