@@ -1,0 +1,21 @@
+.circle_button {
+    border-radius: 100vw;
+    border: 0px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle_button:hover {
+    opacity: 0.8;
+}
+
+.links li {
+    width: 120px;
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}

@@ -9,7 +9,7 @@ const GenerateAdFlow = () => {
     { number : 1, content: 'Select a Location to Post Ad'},
     { number : 2, content: "Customize or Select an \n Ad Campaign"},
     { number: 3, content: 'Complete payment or connect \n with a marketing expert for \n tailored support.' },
-    { number: null, content: <Button title='START' width='320px' icon={<Icon category='RightArrow' width={24} height={24}/>}/> }
+    { number: null, content: <Button title='START' width='320px' icon={<Icon category='RightArrow' width={30} height={30}/>}/> }
   ]
 
   return (

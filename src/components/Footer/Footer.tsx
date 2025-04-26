@@ -2,8 +2,19 @@ import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 import Button from '../Controls/buttons/Button';
 import Icon from '../Icon/Icon';
+import TextInput from '../Controls/inputs/text/TextInput';
+import { FormEvent, useState } from 'react';
 
 export default function Footer() {
+
+  const [email, setEmail] = useState("");
+
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    console.log(email)
+  }
+
   return (
     <footer className={styles.footer}>
       <div className={styles.grid}>
@@ -53,12 +64,20 @@ export default function Footer() {
         {/* Newsletter */}
         <div>
           <h4 className={styles.heading}>Subscribe</h4>
-          <form onSubmit={e => e.preventDefault()}>
-            <input
+          <form onSubmit={handleSubmit}>
+            {/* <input
               type="email"
               placeholder="Your email"
               className={styles.input}
               required
+            /> */}
+            <TextInput
+             id='newsLetterEmail'
+             label='Email'
+             value={email}
+             onChange={(newValue) => setEmail(newValue)} 
+             required={true}
+             validPattern={/^[^\s@]+@[^\s@]+\.[^\s@]+$/} //valid email regex
             />
             <Button
              type="submit"
