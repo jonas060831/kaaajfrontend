@@ -5,6 +5,10 @@ import {
   useEffect,
   useState,
 } from 'react';
+import DismissModal from '../components/Modals/DismissModal';
+import { useNavigate } from 'react-router';
+
+
 
 interface User {
   username: string;
@@ -50,30 +54,37 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(getUserFromToken());
   const [isSessionExpired, setIsSessionExpired] = useState(false);
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+
+  const navigate = useNavigate()
+
   const clearUser = () => {
     setUser(null);
     localStorage.removeItem('token');
   };
 
-  // ⏰ Token expiry check
   useEffect(() => {
     const interval = setInterval(() => {
       const token = localStorage.getItem('token');
       if (!token) return;
 
+
+  
       try {
         const payload = JSON.parse(atob(token.split('.')[1]));
         const currentTime = Math.floor(Date.now() / 1000);
-
+  
+        //token is expired which being check every 500ms
         if (payload && payload.exp < currentTime) {
-          clearUser();
-          setIsSessionExpired(true);
+          setIsSessionExpired(true)
+          setIsModalOpen(true)
         }
       } catch (error) {
         console.error('Token parse error:', error);
       }
-    }, 500); // check every 5 seconds
-
+    }, 500);
+  
     return () => clearInterval(interval);
   }, []);
 
@@ -88,21 +99,36 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       {children}
 
       {isSessionExpired && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-80 text-center">
-            <h2 className="text-xl font-semibold mb-2">Session Expired</h2>
-            <p className="mb-4">Your session has ended. Please Sign In again.</p>
-            <button
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-              onClick={() => {
-                setIsSessionExpired(false);
-                window.location.href = '/signin';
-              }}
-            >
-              Go To Sign In
-            </button>
-          </div>
-        </div>
+        // <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+        //   <div className="bg-white rounded-lg shadow-lg p-6 w-80 text-center">
+        //     <h2 className="text-xl font-semibold mb-2">Session Expired</h2>
+        //     <p className="mb-4">Your session has ended. Please Sign In again.</p>
+        //     <button
+        //       className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        //       onClick={() => {
+        //         setIsSessionExpired(false);
+        //         window.location.href = '/signin';
+        //       }}
+        //     >
+        //       Go To Sign In
+        //     </button>
+        //   </div>
+        // </div>
+        <DismissModal
+          title='Good Bye!'
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false)
+            clearUser()
+            navigate('/signin')
+            
+          }}
+          buttonTitle='Ok'
+        >
+          <h3>
+            Session Expired
+          </h3>
+        </DismissModal>
       )}
     </AuthContext.Provider>
   );

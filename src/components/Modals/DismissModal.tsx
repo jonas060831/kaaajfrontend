@@ -7,9 +7,11 @@ type DismissModalProps = {
   onClose: () => void;
   title?: string;
   children: ReactNode;
+  buttonClassName?: "default" | "dark" | "light" | "danger" | undefined;
+  buttonTitle?: string
 };
 
-const DismissModal: FC<DismissModalProps> = ({ isOpen, onClose, title, children }) => {
+const DismissModal: FC<DismissModalProps> = ({ isOpen, onClose, title, children, buttonClassName, buttonTitle }) => {
   if (!isOpen) return null;
 
   return (
@@ -19,7 +21,7 @@ const DismissModal: FC<DismissModalProps> = ({ isOpen, onClose, title, children 
         <br /><br />
         <div className={styles.content}>{children}</div>
         <br /><br />
-        <Button className="danger" title="Dismiss" icon={''} onClick={onClose}/>
+        <Button className={buttonClassName ? buttonClassName : "default" } title={buttonTitle!} icon={''} onClick={onClose}/>
       </div>
     </div>
   );

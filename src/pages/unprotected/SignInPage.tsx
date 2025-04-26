@@ -69,11 +69,13 @@ const SignInPage = () => {
             </form>
 
             <DismissModal
+             title="Error Message"
              isOpen={isModalOpen}
              onClose={() => setIsModalOpen(false)}
-             title={error as string}
+             buttonClassName='danger'
+             buttonTitle='Try Again'
             >
-              <h3>401 Error Code</h3>
+              <h3>{error as string}</h3>
             </DismissModal>
         </div>
 
