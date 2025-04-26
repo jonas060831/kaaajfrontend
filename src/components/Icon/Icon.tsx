@@ -11,6 +11,8 @@ import SignIn from '../../assets/svgs/signalRight.svg?react'
 import Bell from '../../assets/svgs/bell.svg?react'
 import Chat from '../../assets/svgs/chat.svg?react'
 import SignUp from '../../assets/svgs/signUp.svg?react'
+import EyeOpen from '../../assets/svgs/eyeopen.svg?react'
+import EyeClose from '../../assets/svgs/eyeclose.svg?react'
 
 type IconProps = {
   category: string;
@@ -18,6 +20,7 @@ type IconProps = {
   className?: any;
   width: number;
   height: number;
+  color?: string;
 };
 
 const iconMap: { [key: string]: JSX.Element } = {
@@ -32,15 +35,17 @@ const iconMap: { [key: string]: JSX.Element } = {
   SignIn: <SignIn />,
   SignUp: <SignUp />,
   Bell: <Bell />,
-  Chat: <Chat />
+  Chat: <Chat />,
+  EyeOpen: <EyeOpen />,
+  EyeClose: <EyeClose />
 
 };
 
-const Icon: FC<IconProps> = ({ category, onClick, className, width, height }) => {
+const Icon: FC<IconProps> = ({ category, onClick, className, width, height, color }) => {
   const IconComponent = iconMap[category];
 
   return IconComponent ? (
-    React.cloneElement(IconComponent, { className, width, height, onClick })
+    React.cloneElement(IconComponent, { className, width, height, onClick, color })
   ) : (
     <>Icon Not Found</>
   );

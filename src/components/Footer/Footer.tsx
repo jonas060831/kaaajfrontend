@@ -8,7 +8,7 @@ import { FormEvent, useEffect, useState } from 'react';
 export default function Footer() {
 
   const location = useLocation()
-  
+
   const [email, setEmail] = useState("");
   const [isHidden, setIsHidden] = useState(false)
 
@@ -81,10 +81,11 @@ export default function Footer() {
               required
             /> */}
             <TextInput
+             name='email'
              id='newsLetterEmail'
              label='Email'
              value={email}
-             onChange={(newValue) => setEmail(newValue)} 
+             onChange={(event) => setEmail(event.target.value)} 
              required={true}
              validPattern={/^[^\s@]+@[^\s@]+\.[^\s@]+$/} //valid email regex
             />

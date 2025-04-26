@@ -2,6 +2,7 @@ import { ChangeEvent, FC, useState } from "react";
 import styles from "./TextInput.module.css";
 
 type TextInputProps = {
+  name: string;
   label: string;
   value: string;
   onChange: (event: any) => any
@@ -11,7 +12,7 @@ type TextInputProps = {
   validPattern?: RegExp;
 }
 
-const TextInput:FC<TextInputProps> = ({ label, value, onChange, type = "text", id, required=false, validPattern }) => {
+const TextInput:FC<TextInputProps> = ({ name, label, value, onChange, type = "text", id, required=false, validPattern }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isValid, setIsValid] = useState(true)
 
@@ -25,10 +26,10 @@ const TextInput:FC<TextInputProps> = ({ label, value, onChange, type = "text", i
 
   //check the value on each value change
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value
+    const valueToCheck = event.target.value
 
-    if(validPattern) setIsValid(validPattern.test(newValue))
-    onChange(newValue)
+    if(validPattern) setIsValid(validPattern.test(valueToCheck))
+    onChange(event)
 
   }
 
@@ -41,6 +42,7 @@ const TextInput:FC<TextInputProps> = ({ label, value, onChange, type = "text", i
         {label}
       </label>
       <input
+        name={name}
         id={id}
         type={type}
         value={value}
