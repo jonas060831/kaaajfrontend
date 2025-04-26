@@ -13,6 +13,7 @@ import Chat from '../../assets/svgs/chat.svg?react'
 import SignUp from '../../assets/svgs/signUp.svg?react'
 import EyeOpen from '../../assets/svgs/eyeopen.svg?react'
 import EyeClose from '../../assets/svgs/eyeclose.svg?react'
+import Loading from '../../assets/svgs/loading.svg?react'
 
 type IconProps = {
   category: string;
@@ -37,7 +38,8 @@ const iconMap: { [key: string]: JSX.Element } = {
   Bell: <Bell />,
   Chat: <Chat />,
   EyeOpen: <EyeOpen />,
-  EyeClose: <EyeClose />
+  EyeClose: <EyeClose />,
+  Loading: <Loading />
 
 };
 
