@@ -9,25 +9,33 @@ import { Typewriter } from 'react-simple-typewriter'
 import Icon from '../Icon/Icon';
 import { useAuthContext } from '../../contexts/AuthContext';
 import CircleButton from '../Controls/buttons/CircleButton';
+import DilemmaModal from '../Modals/DilemmaModal';
 
 const NavBar = () => {
 
-  const { user } = useAuthContext()
+  const { user, clearUser } = useAuthContext()
   const navigate = useNavigate()
   const location = useLocation()
 
   const [isHidden, setIsHidden] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false) /* mobile only */
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
   const toggleRightMenu = () :void => setIsMenuOpen(!isMenuOpen) /* mobile only */
 
-
+  const handleSignOut = () => {
+    clearUser()
+    setIsModalOpen(false)
+    setIsMenuOpen(false)
+  }
   const { pathname } = location
 
   useEffect(() => {
     pathname === '/signin' || pathname === '/signup' ? setIsHidden(true) : setIsHidden(false)
   }, [pathname])
 
+
+  
   return (
     <>
       <nav className={styles.navbar_container}>
@@ -39,7 +47,8 @@ const NavBar = () => {
             isHidden ? (
               <>
                 <CircleButton
-                type='auto'
+                className='light'
+                type='button'
                 icon={<Icon  category='LeftArrow' width={24} height={24}/>}
                 onClick={() => navigate(-1)}
                 width={40}
@@ -179,6 +188,7 @@ const NavBar = () => {
           </li>
         </ul>
 
+        {/* mobile only */}
         <ul className={styles.menu_links}>
           
           <NavLink to={user ? '/account' : '/signin'} onClick={() => toggleRightMenu()}>
@@ -223,11 +233,28 @@ const NavBar = () => {
             </li>
           </NavLink>
           
+          <div style={{ marginTop: '100%', backgroundColor: 'none' }}></div>
+          <NavLink to="/" onClick={() => setIsModalOpen(true)}>
+            <li >
+              <Icon category='Off' width={24} height={24} /> Sign Out
+            </li>
+          </NavLink>
         </ul>
-
         </motion.div>
       
-        
+        {/* confirm sign out modal*/}
+
+        <DilemmaModal
+             title="Sign Out"
+             isOpen={isModalOpen}
+             onClose={() => setIsModalOpen(false)}
+             buttonClassName='danger'
+             buttonTitle='Yes'
+             cancelButtonText='No'
+             onAction={handleSignOut}
+            >
+              <h3>Are your sure you want to Sign Out?</h3>
+            </DilemmaModal>
     </>
   )
 }

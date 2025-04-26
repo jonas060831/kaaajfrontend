@@ -3,12 +3,12 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import TextInput from '../../components/Controls/inputs/text/TextInput'
 import styles from './SignInPage.module.css'
 import PasswordInput from '../../components/Controls/inputs/password/PasswordInput'
-import Button from '../../components/Controls/buttons/Button'
 import Icon from '../../components/Icon/Icon'
 import { signIn } from '../../services/authService'
 import { useAuthContext } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router'
 import DismissModal from '../../components/Modals/DismissModal'
+import CircleButton from '../../components/Controls/buttons/CircleButton'
 
 const SignInPage = () => {
 
@@ -60,11 +60,17 @@ const SignInPage = () => {
 
               <TextInput name='username' id='signInPageUsername' label='Email' value={formData.username} onChange={handleChange} />
               <PasswordInput name='password' id='signInPagePassword' label='Password' value={formData.password} onChange={handleChange}/>
-              <Button
+              {/* <Button
                title='Sign In'
                type='submit'
                isLoading={loading}
-               icon={ <Icon category='RightArrow' width={35} height={35}/> }
+               icon={ }
+              /> */}
+              <CircleButton
+               className='auto'
+               type='submit'
+               isLoading={loading}
+               icon={<Icon category='RightArrow' width={35} height={35}/> }
               />
             </form>
 
