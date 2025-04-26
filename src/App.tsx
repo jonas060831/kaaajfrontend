@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router';
+import { Routes, Route } from 'react-router-dom'; // use react-router-dom
 import NavBar from './components/NavBar/NavBar';
 import { useAuthContext } from './contexts/AuthContext';
 import DashboardPage from './pages/protected/DashboardPage';
@@ -9,29 +9,33 @@ import ErrorPage from './pages/unprotected/ErrorPage';
 import SignInPage from './pages/unprotected/SignInPage';
 import ContactPage from './pages/unprotected/ContactPage';
 
-const App = () => {
+import styles from './App.module.css';
+import AarloChatButton from './components/AarloButton/AarloChatButton';
 
-  const { user } = useAuthContext()
+const App = () => {
+  const { user } = useAuthContext();
 
   return (
-    <>
+    <div className={styles.appWrapper}>
       <NavBar />
-      <Routes>
-        {/* unprotected */}
-        <Route path='/' element={ user ? <DashboardPage/> : <LandingPage /> }/>
-        <Route path='/signup' element={<SignUpPage />} />
-        <Route path='/signin' element={<SignInPage />} />
-        <Route path='/contact' element={<ContactPage />} />
+      <main className={styles.mainContent}>
+        <Routes>
+          {/* unprotected */}
+          <Route path='/' element={user ? <DashboardPage /> : <LandingPage />} />
+          <Route path='/signup' element={<SignUpPage />} />
+          <Route path='/signin' element={<SignInPage />} />
+          <Route path='/contact' element={<ContactPage />} />
 
-        {/* protected */}
+          {/* protected routes could go here */}
 
-        {/* 404 page */}
-        <Route path='*' element={<ErrorPage />} />
-
-      </Routes>
+          {/* fallback */}
+          <Route path='*' element={<ErrorPage />} />
+        </Routes>
+      </main>
       <Footer />
-    </>
-  )
-}
+      <AarloChatButton />
+    </div>
+  );
+};
 
-export default App
+export default App;

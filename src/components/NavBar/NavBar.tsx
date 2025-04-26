@@ -1,32 +1,83 @@
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import styles from './NavBar.module.css'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion'
 
 import { Typewriter } from 'react-simple-typewriter'
 import Icon from '../Icon/Icon';
 import { useAuthContext } from '../../contexts/AuthContext';
+import CircleButton from '../Controls/buttons/CircleButton';
 
 const NavBar = () => {
 
   const { user } = useAuthContext()
+  const navigate = useNavigate()
+  const location = useLocation()
 
+  const [isHidden, setIsHidden] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false) /* mobile only */
 
   const toggleRightMenu = () :void => setIsMenuOpen(!isMenuOpen) /* mobile only */
+
+
+  const { pathname } = location
+
+  useEffect(() => {
+    pathname === '/signin' || pathname === '/signup' ? setIsHidden(true) : setIsHidden(false)
+  }, [pathname])
 
   return (
     <>
       <nav className={styles.navbar_container}>
         {/* desktop */}
         <section className={styles.navbar}>
-          <NavLink className={styles.company_logo} to="/">
-            KaaaJ
-          </NavLink>
+
+          {/* show this instead when on signin page */}
+          {
+            isHidden ? (
+              <>
+                <CircleButton
+                type='auto'
+                icon={<Icon  category='LeftArrow' width={24} height={24}/>}
+                onClick={() => navigate(-1)}
+                width={40}
+                height={40}
+                />
+                <ul className={styles.links}>
+
+                    {
+                      pathname !== '/signup' ? (
+                        <li >
+                          <NavLink to="/signup" className={styles.navbar_links}>
+                            <Icon category='SignUp' width={20} height={20}/>
+                            Sign Up
+                          </NavLink>
+                        </li>
+                      ) : (
+                        <li style={{ visibility: 'hidden' }}>
+                          <NavLink to="/" className={styles.navbar_links}>
+                            <Icon category='SignUp' width={20} height={20}/>
+                            Sign Up
+                          </NavLink>
+                        </li>
+                      )
+                    }
+                    
+                </ul>
+                
+              </>
+            ) : (
+            <NavLink className={styles.company_logo} to="/">
+              KaaaJ
+            </NavLink>
+            )
+          }
+
           
-          <section>
+          
+          <section style={{ display: isHidden ? 'none' : 'unset' }}>
           <ul className={styles.links}>
               <li>
                 <NavLink to="/services" className={styles.navbar_links}>
@@ -86,7 +137,6 @@ const NavBar = () => {
              onClick={toggleRightMenu}
             />
           </section>
-
         </section>
       </nav>
 
@@ -176,7 +226,8 @@ const NavBar = () => {
         </ul>
 
         </motion.div>
-
+      
+        
     </>
   )
 }

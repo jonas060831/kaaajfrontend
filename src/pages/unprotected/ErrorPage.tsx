@@ -1,9 +1,9 @@
 
 const ErrorPage = () => {
   return (
-    <div>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '40vh' }}>
 
-        404 Not Found
+        <h1 style={{ fontFamily: 'Orbitron' }}>404 Not Found !</h1>
 
     </div>
   )

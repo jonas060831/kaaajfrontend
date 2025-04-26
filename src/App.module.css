@@ -1,0 +1,11 @@
+/* App.module.css or global CSS */
+.appWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* full viewport height */
+  }
+  
+  .mainContent {
+    flex: 1; /* take up all remaining space */
+  }
+  

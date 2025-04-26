@@ -8,7 +8,7 @@
     margin: 0px auto;
     margin-top: 20rem;
     font-family: 'Orbitron';
-    border-bottom-right-radius: 5vw;
+    border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -40,6 +40,8 @@
 .step_item {
     display: flex;
     width: 330px;
+    height: 96px;
+    align-items: center;
     gap: 1rem;
     white-space: pre-wrap;
 }
@@ -55,9 +57,13 @@
     align-self: center;
 }
 
+.map_location_finder_container {
+    width: 55%;
+}
+
 .map_location_finder {
-    height: 100%;
-    width: 100%;
+    height: 95%;
+    width: 95%;
     object-fit: fill;
     border-top-left-radius: 18vw;
     border-bottom-right-radius: 10vw;
@@ -74,6 +80,7 @@
 @media (min-width: 320px) and (max-width: 480px) {
     .container {
         text-align: center;
+        margin-top: 10rem;
     }
     .steps_and_map_container {
         display: block;
@@ -83,10 +90,14 @@
         
     }
     .steps_container {
-        width: 100%;
-        
+        width: 320px;
+        margin: 0px auto;
+        text-align: left;
     }
     .step_item {
         width: 100%;
+    }
+    .map_location_finder_container {
+        width: 0%;
     }
 }

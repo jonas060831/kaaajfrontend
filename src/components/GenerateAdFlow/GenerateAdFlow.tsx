@@ -9,18 +9,18 @@ const GenerateAdFlow = () => {
     { number : 1, content: 'Select a Location to Post Ad'},
     { number : 2, content: "Customize or Select an \n Ad Campaign"},
     { number: 3, content: 'Complete payment or connect \n with a marketing expert for \n tailored support.' },
-    { number: null, content: <Button title='START' icon={<Icon category='RightArrow' width={24} height={24}/>}/> }
+    { number: null, content: <Button title='START' width='320px' icon={<Icon category='RightArrow' width={30} height={30}/>}/> }
   ]
 
   return (
     <div className={styles.container}>
 
-          {/* header */}
+          
           <div className={styles.header}>
             <p>Start Your campaign today</p>
           </div>
 
-          {/* 2 column */}
+          
           <div className={styles.steps_and_map_container}>
 
             <div className={styles.steps_container}>
@@ -29,14 +29,14 @@ const GenerateAdFlow = () => {
 
                   {step.number && <div className={styles.number_bullet} >{step.number}</div>}
                   
-                  <p style={{ width: '250px', lineHeight: '2'}}> {step.content}</p>
+                  <div> {step.content}</div>
 
                 </div>
               ))}
               
-            </div> {/*  steps */}
+            </div>
             
-            <div style={{ width: '55%' }}>
+            <div className={styles.map_location_finder_container}>
               <img
                className={styles.map_location_finder}
                src={undefined}

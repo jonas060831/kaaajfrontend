@@ -1,0 +1,89 @@
+.footer {
+    background: var(--ui-background-color);
+    color: var(--font-color);
+    padding: 3rem 1rem;
+    margin-top: 4rem;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .heading {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* .ulRow {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+  } */
+  
+  .link {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  
+  .text {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin: 0.2rem 0;
+  }
+  
+  .input {
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    background-color: var(--button-bg-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .copyRight {
+    text-align: center;
+    margin-top: 2rem;
+    color: #777;
+    font-size: 0.85rem;
+  }
+  
+  /* Responsive Styles */
+  @media (min-width: 600px) {
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  
+    .input,
+    .button {
+      width: auto;
+    }
+  
+    .ulRow {
+      justify-content: start;
+    }
+  }
+  
