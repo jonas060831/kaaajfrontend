@@ -1,13 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Footer.module.css';
 import Button from '../Controls/buttons/Button';
 import Icon from '../Icon/Icon';
 import TextInput from '../Controls/inputs/text/TextInput';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 
 export default function Footer() {
 
+  const location = useLocation()
+  
   const [email, setEmail] = useState("");
+  const [isHidden, setIsHidden] = useState(false)
+
+  const { pathname } = location
+  
+  useEffect(() => {
+    pathname === '/signin' || pathname === '/signup' ? setIsHidden(true) : setIsHidden(false)
+  }, [pathname])
 
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -16,7 +25,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} style={{ display: isHidden ? 'none' : 'unset'  }}>
       <div className={styles.grid}>
 
         {/* Sitemap */}
