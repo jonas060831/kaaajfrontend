@@ -58,8 +58,23 @@ const SignInPage = () => {
             
             <form onSubmit={handleSubmit}>
 
-              <TextInput name='username' id='signInPageUsername' label='Email' value={formData.username} onChange={handleChange} />
-              <PasswordInput name='password' id='signInPagePassword' label='Password' value={formData.password} onChange={handleChange}/>
+              <TextInput
+               name='username'
+               id='signInPageUsername'
+               label='Email'
+               value={formData.username}
+               onChange={handleChange}
+               required
+              />
+              
+              <PasswordInput
+               name='password'
+               id='signInPagePassword'
+               label='Password'
+               value={formData.password}
+               onChange={handleChange}
+               required
+              />
               {/* <Button
                title='Sign In'
                type='submit'

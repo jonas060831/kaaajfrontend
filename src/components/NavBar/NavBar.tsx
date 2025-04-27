@@ -79,7 +79,7 @@ const NavBar = () => {
               </>
             ) : (
             <NavLink className={styles.company_logo} to="/">
-              KaaaJ
+              {user ? 'Dashboard' :  'KaaaJ'}
             </NavLink>
             )
           }
@@ -88,33 +88,35 @@ const NavBar = () => {
           
           <section style={{ display: isHidden ? 'none' : 'unset' }}>
           <ul className={styles.links}>
-              <li>
+              <li style={{ display: user ? 'none' : 'block' }}>
                 <NavLink to="/services" className={styles.navbar_links}>
                   <Icon category='Services' width={20} height={20}/>
                   Services
                 </NavLink>
               </li>
               
-              <li>
+              <li style={{ display: user ? 'none' : 'block' }}>
                 <NavLink to="/careers" className={styles.navbar_links}>
                   <Icon category='Careers' width={20} height={20}/>
                   Careers
                 </NavLink>
               </li>
 
-              <li>
+              <li style={{ display: user ? 'none' : 'block' }}>
                 <NavLink to="/about" className={styles.navbar_links}>
                   <Icon category='About' width={20} height={20}/>
                   About
                 </NavLink>
               </li>
 
-              <li>
+              <li style={{ display: user ? 'none' : 'block' }}>
                 <NavLink to="/contact" className={styles.navbar_links}>
                   <Icon category='Contact' width={20} height={20}/>
                   Contact
                 </NavLink>
               </li>
+
+              
               
               <li>
                 <NavLink to={ user ? '/account' : '/signin' } className={styles.navbar_links}>
@@ -190,6 +192,31 @@ const NavBar = () => {
 
         {/* mobile only */}
         <ul className={styles.menu_links}>
+
+          {/* show options for authenticated users */}
+          
+          <NavLink to="/" onClick={() => toggleRightMenu()}>
+            <li style={{ display: user ? '' : 'none' }}>
+              <Icon category='Home' width={20} height={20}/>
+              Dashboard
+            </li>
+          </NavLink>
+
+          <NavLink to="/balances" onClick={() => toggleRightMenu()}>
+            <li style={{ display: user ? '' : 'none' }}>
+              <Icon category='MoneyBag' width={20} height={20}/>
+              Balances
+            </li>
+          </NavLink>
+
+          <NavLink to="/admanager" onClick={() => toggleRightMenu()}>
+            <li style={{ display: user ? '' : 'none' }}>
+              <Icon category='AdManager' width={20} height={20}/>
+              Ad Manager
+            </li>
+          </NavLink>
+          
+
           
           <NavLink to={user ? '/account' : '/signin'} onClick={() => toggleRightMenu()}>
             <li>
@@ -209,33 +236,34 @@ const NavBar = () => {
           </NavLink>
           
           <NavLink to="/services" onClick={() => toggleRightMenu()}>
-            <li>
+            <li style={{ display: user ? 'none' : '' }}>
               <Icon category='Services' width={24} height={24}/> Services
             </li>
           </NavLink>
           
           <NavLink to="/careers" onClick={() => toggleRightMenu()} >
-            <li>
+            <li style={{ display: user ? 'none' : '' }}>
               <Icon category='Careers'width={24} height={24}/>
               Careers
             </li>
           </NavLink>
 
           <NavLink to="/about" onClick={() => toggleRightMenu()}>
-            <li>
+            <li style={{ display: user ? 'none' : '' }}>
               <Icon category='About' width={24} height={24}/> About
             </li>
           </NavLink>
           
           <NavLink to="/contact" onClick={() => toggleRightMenu()}>
-            <li>
+            <li style={{ display: user ? 'none' : '' }}>
               <Icon category='Contact' width={24} height={24}/> Contact
             </li>
           </NavLink>
           
           <div style={{ marginTop: '100%', backgroundColor: 'none' }}></div>
+
           <NavLink to="/" onClick={() => setIsModalOpen(true)}>
-            <li >
+            <li style={{ display: user ? '' : 'none', color: 'rgba(255, 255, 255, 0.7)' }}>
               <Icon category='Off' width={24} height={24} /> Sign Out
             </li>
           </NavLink>

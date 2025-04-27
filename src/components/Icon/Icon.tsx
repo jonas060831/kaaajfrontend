@@ -15,6 +15,10 @@ import EyeOpen from '../../assets/svgs/eyeopen.svg?react'
 import EyeClose from '../../assets/svgs/eyeclose.svg?react'
 import Loading from '../../assets/svgs/loading.svg?react'
 import Off from '../../assets/svgs/off.svg?react'
+import Desktop from '../../assets/svgs/desktop.svg?react'
+import Home from '../../assets/svgs/home.svg?react'
+import MoneyBag from '../../assets/svgs/moneybag.svg?react'
+import AdManager from '../../assets/svgs/admanager.svg?react'
 
 type IconProps = {
   category: string;
@@ -41,7 +45,11 @@ const iconMap: { [key: string]: JSX.Element } = {
   EyeOpen: <EyeOpen />,
   EyeClose: <EyeClose />,
   Loading: <Loading />,
-  Off: <Off />
+  Off: <Off />,
+  Desktop: <Desktop />,
+  Home: <Home />,
+  MoneyBag: <MoneyBag />,
+  AdManager: <AdManager />
 
 };
 
