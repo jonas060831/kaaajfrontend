@@ -9,6 +9,7 @@ import { useAuthContext } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router'
 import DismissModal from '../../components/Modals/DismissModal'
 import CircleButton from '../../components/Controls/buttons/CircleButton'
+import { Link } from 'react-router-dom'
 
 const SignInPage = () => {
 
@@ -43,11 +44,11 @@ const SignInPage = () => {
   }
   return (
     <div className={styles.container}>
-
+        
         <div>
           <h1>KaaaJ Advertisement</h1>
         </div>
-
+        
         <div>
 
             <h1>Sign In</h1>
@@ -87,6 +88,10 @@ const SignInPage = () => {
                isLoading={loading}
                icon={<Icon category='RightArrow' width={35} height={35}/> }
               />
+
+              <br /><br />
+              <Link to="/signup" style={{ color: 'var(--font-color)' }} >Sign Up ?</Link>
+
             </form>
 
             <DismissModal
@@ -99,7 +104,6 @@ const SignInPage = () => {
               <h3>{error as string}</h3>
             </DismissModal>
         </div>
-
     </div>
   )
 }
