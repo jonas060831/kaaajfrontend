@@ -67,22 +67,27 @@ const SignUpPage = () => {
           <form onSubmit={handleSubmit}>
 
             <h6 style={{ marginBottom: '-0.5rem' }}>personal</h6>
-            <TextInput
-              name='firstname'
-              id='signUpPageFirstName'
-              label='First Name'
-              value={formData.firstname}
-              onChange={handleChange}
-              required
-            />
+            
+            <div style={{ display: 'flex', gap: '1rem', flex: '1fr 0.5fr' }}>
+              <TextInput
+                name='firstname'
+                id='signUpPageFirstName'
+                label='First Name'
+                value={formData.firstname}
+                onChange={handleChange}
+                required
+              />
 
-            <TextInput
-              name='middlename'
-              id='signUpPageMiddleName'
-              label='Middle Name'
-              value={formData.middlename}
-              onChange={handleChange}
-            />
+              <TextInput
+                name='middlename'
+                id='signUpPageMiddleName'
+                label='Middle Name'
+                value={formData.middlename}
+                onChange={handleChange}
+              />
+            </div>
+
+            
 
             <TextInput
               name='lastname'
