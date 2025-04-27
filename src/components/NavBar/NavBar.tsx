@@ -87,55 +87,87 @@ const NavBar = () => {
           
           
           <section style={{ display: isHidden ? 'none' : 'unset' }}>
-          <ul className={styles.links}>
-              <li style={{ display: user ? 'none' : 'block' }}>
-                <NavLink to="/services" className={styles.navbar_links}>
-                  <Icon category='Services' width={20} height={20}/>
-                  Services
-                </NavLink>
-              </li>
-              
-              <li style={{ display: user ? 'none' : 'block' }}>
-                <NavLink to="/careers" className={styles.navbar_links}>
-                  <Icon category='Careers' width={20} height={20}/>
-                  Careers
-                </NavLink>
-              </li>
 
-              <li style={{ display: user ? 'none' : 'block' }}>
-                <NavLink to="/about" className={styles.navbar_links}>
-                  <Icon category='About' width={20} height={20}/>
-                  About
-                </NavLink>
-              </li>
+          
 
-              <li style={{ display: user ? 'none' : 'block' }}>
-                <NavLink to="/contact" className={styles.navbar_links}>
-                  <Icon category='Contact' width={20} height={20}/>
-                  Contact
-                </NavLink>
-              </li>
+            <ul className={styles.links}>
 
-              
-              
-              <li>
-                <NavLink to={ user ? '/account' : '/signin' } className={styles.navbar_links}>
+                  <li style={{ display: user ? 'block' : 'none' }}>
+                    <NavLink to="/" className={styles.navbar_links}>
+                      <Icon category='Home' width={24} height={24}/>
+                      Home
+                    </NavLink>
+                  </li>
 
-                  {user ? 
-                    <>
-                      <Icon category='Account' width={24} height={24}/>
-                      Account
-                    </>
-                    :
-                    <>
-                      <Icon category='SignIn' width={24} height={24}/>
-                      Sign In
-                    </>
-                  }
-                  
-                </NavLink>
-              </li>
-          </ul>
+                  <li style={{ display: user ? 'block' : 'none' }}>
+                    <NavLink to="/balances" className={styles.navbar_links}>
+                        <Icon category='MoneyBag' width={24} height={24}/>
+                        Balance
+                    </NavLink>
+                  </li>
+
+                <li style={{ display: user ? 'block' : 'none' }}>
+                  <NavLink to="/manager" className={styles.navbar_links}>
+                      <Icon category='AdManager' width={24} height={24}/>
+                      Manager
+                  </NavLink>
+                </li>
+
+                <li style={{ display: user ? 'block' : 'none' }}>
+                  <NavLink to="/reports" className={styles.navbar_links}>
+                      <Icon category='Reports' width={24} height={24}/>
+                      Reports
+                  </NavLink>
+                </li>
+
+                <li style={{ display: user ? 'none' : 'block' }}>
+                  <NavLink to="/services" className={styles.navbar_links}>
+                    <Icon category='Services' width={20} height={20}/>
+                    Services
+                  </NavLink>
+                </li>
+                
+                <li style={{ display: user ? 'none' : 'block' }}>
+                  <NavLink to="/careers" className={styles.navbar_links}>
+                    <Icon category='Careers' width={20} height={20}/>
+                    Careers
+                  </NavLink>
+                </li>
+
+                <li style={{ display: user ? 'none' : 'block' }}>
+                  <NavLink to="/about" className={styles.navbar_links}>
+                    <Icon category='About' width={20} height={20}/>
+                    About
+                  </NavLink>
+                </li>
+
+                <li style={{ display: user ? 'none' : 'block' }}>
+                  <NavLink to="/contact" className={styles.navbar_links}>
+                    <Icon category='Contact' width={20} height={20}/>
+                    Contact
+                  </NavLink>
+                </li>
+
+                
+                
+                <li >
+                  <NavLink to={ user ? '/account' : '/signin' } className={styles.navbar_links}>
+
+                    {user ? 
+                      <>
+                        <Icon category='Account' width={24} height={24}/>
+                        Account
+                      </>
+                      :
+                      <>
+                        <Icon category='SignIn' width={24} height={24}/>
+                        Sign In
+                      </>
+                    }
+                    
+                  </NavLink>
+                </li>
+            </ul>
           </section>
 
           {/* right menu icon */}
@@ -215,6 +247,13 @@ const NavBar = () => {
               Ad Manager
             </li>
           </NavLink>
+
+          <NavLink to="/reports" onClick={() => toggleRightMenu()}>
+            <li style={{ display: user ? '' : 'none' }}>
+              <Icon category='Reports' width={20} height={20}/>
+              Reports
+            </li>
+          </NavLink>
           
 
           
@@ -234,6 +273,8 @@ const NavBar = () => {
             </li>
             
           </NavLink>
+
+          {/* unAuthenticated users menu */}
           
           <NavLink to="/services" onClick={() => toggleRightMenu()}>
             <li style={{ display: user ? 'none' : '' }}>
