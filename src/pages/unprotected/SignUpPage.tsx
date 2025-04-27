@@ -3,10 +3,23 @@ import { signUp } from "../../services/authService"
 import { useAuthContext } from "../../contexts/AuthContext"
 import { useNavigate } from "react-router-dom"
 
+import styles from './SignInPage.module.css'
+import Button from "../../components/Controls/buttons/Button"
+import Icon from "../../components/Icon/Icon"
+import TextInput from "../../components/Controls/inputs/text/TextInput"
+import PasswordInput from "../../components/Controls/inputs/password/PasswordInput"
 
 const SignUpPage = () => {
 
-  const [formData, setFormData] = useState({ username: '', password: '' })
+  const [formData, setFormData] = useState({
+    firstname: '',
+    middlename: '',
+    lastname: '',
+    username: '',
+    password: '',
+    repeatpassword: '',
+    businessname: ''
+  })
   const [serverMessage, setServerMessage] = useState<null | string>()
   
   const { setUser } = useAuthContext()
@@ -15,6 +28,7 @@ const SignUpPage = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
+    console.log(formData)
     try {
         const response = await signUp(formData)
         
@@ -40,35 +54,97 @@ const SignUpPage = () => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) :void => setFormData({...formData, [event.target.name] : event.target.value})
   return (
-    <div>
-        <h3>Sign Up</h3>
-        <p style={{ whiteSpace: 'pre-wrap' }}>{serverMessage} {serverMessage ? <button onClick={ () => setServerMessage(null) }>X</button> : null} </p>
-        <form onSubmit={handleSubmit}>
+    <div className={styles.container} style={{ marginTop: '1.7rem' }}>
 
-        <label htmlFor="username">username:</label> <br />
-                <input
-                type="text"
-                name="username"
-                id="username"
-                required
+        <div>
+          <h1>KaaaJ Advertisement</h1>
+        </div>
+
+        <div>
+          <h1>Sign Up</h1>
+          <p style={{ whiteSpace: 'pre-wrap' }}>{serverMessage} {serverMessage ? <button onClick={ () => setServerMessage(null) }>X</button> : null} </p>
+          
+          <form onSubmit={handleSubmit}>
+
+            <h6 style={{ marginBottom: '-0.5rem' }}>personal</h6>
+            
+            <div style={{ display: 'flex', gap: '1rem', flex: '1fr 0.5fr' }}>
+              <TextInput
+                name='firstname'
+                id='signUpPageFirstName'
+                label='First Name'
+                value={formData.firstname}
                 onChange={handleChange}
-                />
-
-                <br />
-
-                <label htmlFor="password">password:</label> <br />
-                <input
-                type="password"
-                name="password"
-                id="password"
                 required
+              />
+
+              <TextInput
+                name='middlename'
+                id='signUpPageMiddleName'
+                label='Middle Name'
+                value={formData.middlename}
                 onChange={handleChange}
-                />
-                <br /><br />
+              />
+            </div>
 
-                <input type="submit" value="Sign up" />
-        </form>
+            
 
+            <TextInput
+              name='lastname'
+              id='signUpPageLastName'
+              label='Last Name'
+              value={formData.lastname}
+              onChange={handleChange}
+              required
+            />
+
+            <h6 style={{ marginBottom: '-0.5rem' }}>credentials</h6>
+            <TextInput
+              name='username'
+              id='signUpPageUsername'
+              label='Email'
+              value={formData.username}
+              onChange={handleChange}
+              required
+              validPattern={/^[^\s@]+@[^\s@]+\.[^\s@]+$/} //valid email regex
+            />
+
+            <PasswordInput
+              name="password"
+              id="signUpPagePassword"
+              label="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+
+            <PasswordInput
+              name="repeatpassword"
+              id="signUpPageRepeatPassword"
+              label="Repeat-Password"
+              value={formData.repeatpassword}
+              onChange={handleChange}
+              required
+            />
+
+            <h6 style={{ marginBottom: '-0.5rem' }}>Business Information</h6>
+
+            <TextInput
+              name='businessName'
+              id='signUpPageBusinnessName'
+              label='Business Name'
+              value={formData.businessname}
+              onChange={handleChange}
+              required
+            />
+
+            <Button 
+             title="Sign Up"
+             icon={<Icon category="RightArrow" width={24} height={24}/>}
+             type="submit"
+            />
+          </form>
+        </div>
     </div>
   )
 }

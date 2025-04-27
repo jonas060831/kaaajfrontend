@@ -5,11 +5,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 .circle_button:hover {
     opacity: 0.8;
 }
+
+
 
 .links li {
     width: 120px;
@@ -18,4 +21,28 @@
     gap: 1rem;
     align-items: center;
     padding: 0.5rem 1rem;
+}
+
+.auto {
+    background-color: var(--button-bg-color);
+}
+
+.dark {
+    background-color: #333;
+    color: white;
+}
+
+.light {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.loading {
+    background-color: gray;
+    cursor: not-allowed;
 }

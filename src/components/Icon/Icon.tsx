@@ -14,6 +14,12 @@ import SignUp from '../../assets/svgs/signUp.svg?react'
 import EyeOpen from '../../assets/svgs/eyeopen.svg?react'
 import EyeClose from '../../assets/svgs/eyeclose.svg?react'
 import Loading from '../../assets/svgs/loading.svg?react'
+import Off from '../../assets/svgs/off.svg?react'
+import Desktop from '../../assets/svgs/desktop.svg?react'
+import Home from '../../assets/svgs/home.svg?react'
+import MoneyBag from '../../assets/svgs/moneybag.svg?react'
+import AdManager from '../../assets/svgs/admanager.svg?react'
+import Reports from '../../assets/svgs/reports.svg?react'
 
 type IconProps = {
   category: string;
@@ -39,7 +45,13 @@ const iconMap: { [key: string]: JSX.Element } = {
   Chat: <Chat />,
   EyeOpen: <EyeOpen />,
   EyeClose: <EyeClose />,
-  Loading: <Loading />
+  Loading: <Loading />,
+  Off: <Off />,
+  Desktop: <Desktop />,
+  Home: <Home />,
+  MoneyBag: <MoneyBag />,
+  AdManager: <AdManager />,
+  Reports: <Reports />
 
 };
 

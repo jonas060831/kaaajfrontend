@@ -2,16 +2,18 @@ import { FC, ReactNode } from "react";
 import styles from "./Modal.module.css";
 import Button from "../Controls/buttons/Button";
 
-type DismissModalProps = {
+type DilemmaModalProps = {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
   children: ReactNode;
   buttonClassName?: "default" | "dark" | "light" | "danger" | undefined;
-  buttonTitle?: string
+  buttonTitle?: string;
+  cancelButtonText: string;
+  onAction: () => void;
 };
 
-const DismissModal: FC<DismissModalProps> = ({ isOpen, onClose, title, children, buttonClassName, buttonTitle }) => {
+const DilemmaModal: FC<DilemmaModalProps> = ({ isOpen, onClose, title, children, buttonClassName, buttonTitle, cancelButtonText, onAction }) => {
   if (!isOpen) return null;
 
   return (
@@ -21,10 +23,17 @@ const DismissModal: FC<DismissModalProps> = ({ isOpen, onClose, title, children,
         <br /><br />
         <div className={styles.content}>{children}</div>
         <br /><br />
-        <Button className={buttonClassName ? buttonClassName : "default" } title={buttonTitle!} icon={''} onClick={onClose}/>
+        
+        <div style={{ display: 'flex', gap: '1rem' }}>
+
+            <Button className={buttonClassName ? buttonClassName : "default" } title={buttonTitle!} icon={''} onClick={onAction}/>
+            <Button className='light' title={cancelButtonText} icon={''} onClick={onClose} />
+
+        </div>
+
       </div>
     </div>
   );
 };
 
-export default DismissModal;
+export default DilemmaModal;

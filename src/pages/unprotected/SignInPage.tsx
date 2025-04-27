@@ -3,12 +3,13 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import TextInput from '../../components/Controls/inputs/text/TextInput'
 import styles from './SignInPage.module.css'
 import PasswordInput from '../../components/Controls/inputs/password/PasswordInput'
-import Button from '../../components/Controls/buttons/Button'
 import Icon from '../../components/Icon/Icon'
 import { signIn } from '../../services/authService'
 import { useAuthContext } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router'
 import DismissModal from '../../components/Modals/DismissModal'
+import CircleButton from '../../components/Controls/buttons/CircleButton'
+import { Link } from 'react-router-dom'
 
 const SignInPage = () => {
 
@@ -43,11 +44,11 @@ const SignInPage = () => {
   }
   return (
     <div className={styles.container}>
-
+        
         <div>
           <h1>KaaaJ Advertisement</h1>
         </div>
-
+        
         <div>
 
             <h1>Sign In</h1>
@@ -58,25 +59,51 @@ const SignInPage = () => {
             
             <form onSubmit={handleSubmit}>
 
-              <TextInput name='username' id='signInPageUsername' label='Email' value={formData.username} onChange={handleChange} />
-              <PasswordInput name='password' id='signInPagePassword' label='Password' value={formData.password} onChange={handleChange}/>
-              <Button
+              <TextInput
+               name='username'
+               id='signInPageUsername'
+               label='Email'
+               value={formData.username}
+               onChange={handleChange}
+               required
+              />
+              
+              <PasswordInput
+               name='password'
+               id='signInPagePassword'
+               label='Password'
+               value={formData.password}
+               onChange={handleChange}
+               required
+              />
+              {/* <Button
                title='Sign In'
                type='submit'
                isLoading={loading}
-               icon={ <Icon category='RightArrow' width={35} height={35}/> }
+               icon={ }
+              /> */}
+              <CircleButton
+               className='auto'
+               type='submit'
+               isLoading={loading}
+               icon={<Icon category='RightArrow' width={35} height={35}/> }
               />
+
+              <br /><br />
+              <Link to="/signup" style={{ color: 'var(--font-color)' }} >Sign Up ?</Link>
+
             </form>
 
             <DismissModal
+             title="Error Message"
              isOpen={isModalOpen}
              onClose={() => setIsModalOpen(false)}
-             title={error as string}
+             buttonClassName='danger'
+             buttonTitle='Try Again'
             >
-              <h3>401 Error Code</h3>
+              <h3>{error as string}</h3>
             </DismissModal>
         </div>
-
     </div>
   )
 }
