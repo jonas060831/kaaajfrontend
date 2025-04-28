@@ -12,13 +12,13 @@ import PasswordInput from "../../components/Controls/inputs/password/PasswordInp
 const SignUpPage = () => {
 
   const [formData, setFormData] = useState({
-    firstname: '',
-    middlename: '',
-    lastname: '',
+    firstName: '',
+    middleName: '',
+    lastName: '',
     username: '',
     password: '',
     repeatpassword: '',
-    businessname: ''
+    businessName: ''
   })
   const [serverMessage, setServerMessage] = useState<null | string>()
   
@@ -28,11 +28,10 @@ const SignUpPage = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    console.log(formData)
     try {
         const response = await signUp(formData)
         
-        setUser(response)
+        setUser(response!)
         navigate('/')
 
     } catch (error: any) {
@@ -70,19 +69,19 @@ const SignUpPage = () => {
             
             <div style={{ display: 'flex', gap: '1rem', flex: '1fr 0.5fr' }}>
               <TextInput
-                name='firstname'
+                name='firstName'
                 id='signUpPageFirstName'
                 label='First Name'
-                value={formData.firstname}
+                value={formData.firstName}
                 onChange={handleChange}
                 required
               />
 
               <TextInput
-                name='middlename'
+                name='middleName'
                 id='signUpPageMiddleName'
                 label='Middle Name'
-                value={formData.middlename}
+                value={formData.middleName}
                 onChange={handleChange}
               />
             </div>
@@ -90,10 +89,10 @@ const SignUpPage = () => {
             
 
             <TextInput
-              name='lastname'
+              name='lastName'
               id='signUpPageLastName'
               label='Last Name'
-              value={formData.lastname}
+              value={formData.lastName}
               onChange={handleChange}
               required
             />
@@ -133,7 +132,7 @@ const SignUpPage = () => {
               name='businessName'
               id='signUpPageBusinnessName'
               label='Business Name'
-              value={formData.businessname}
+              value={formData.businessName}
               onChange={handleChange}
               required
             />

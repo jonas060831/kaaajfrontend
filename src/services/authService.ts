@@ -1,10 +1,29 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL || 'http://localhost:4000'}/api/auth`
 
-const signUp = async (formData: Record<any, string> )  => {
+const signUp = async (formData: Record<any, any> )  => {
 
     try {
         
         formData.role = 'Guest'
+
+        formData.personal = {
+            firstName : formData.firstName,
+            middleName: formData.middleName,
+            lastName: formData.lastName
+        }
+
+        formData.account = {
+            name: formData.businessName
+        }
+
+        //object cleanup before sending to server
+        delete formData.repeatpassword
+        delete formData.firstName
+        delete formData.lastName
+        delete formData.middleName
+        delete formData.businessName
+
+        console.log(formData)
 
         const options = {
             method: 'POST',
