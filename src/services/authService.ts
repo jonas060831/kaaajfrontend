@@ -16,15 +16,6 @@ const signUp = async (formData: Record<any, any> )  => {
             name: formData.businessName
         }
 
-        //object cleanup before sending to server
-        delete formData.repeatpassword
-        delete formData.firstName
-        delete formData.lastName
-        delete formData.middleName
-        delete formData.businessName
-
-        console.log(formData)
-
         const options = {
             method: 'POST',
             headers: { 'Content-Type' : 'application/json' },

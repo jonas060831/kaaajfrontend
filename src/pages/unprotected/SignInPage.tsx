@@ -76,12 +76,7 @@ const SignInPage = () => {
                onChange={handleChange}
                required
               />
-              {/* <Button
-               title='Sign In'
-               type='submit'
-               isLoading={loading}
-               icon={ }
-              /> */}
+              
               <CircleButton
                className='auto'
                type='submit'

@@ -20,6 +20,7 @@ import Home from '../../assets/svgs/home.svg?react'
 import MoneyBag from '../../assets/svgs/moneybag.svg?react'
 import AdManager from '../../assets/svgs/admanager.svg?react'
 import Reports from '../../assets/svgs/reports.svg?react'
+import Times from '../../assets/svgs/times.svg?react'
 
 type IconProps = {
   category: string;
@@ -51,7 +52,8 @@ const iconMap: { [key: string]: JSX.Element } = {
   Home: <Home />,
   MoneyBag: <MoneyBag />,
   AdManager: <AdManager />,
-  Reports: <Reports />
+  Reports: <Reports />,
+  Times: <Times />
 
 };
 

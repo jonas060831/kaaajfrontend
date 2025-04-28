@@ -1,0 +1,31 @@
+.container {
+    background-color: rgb(224, 36, 36);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.42);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header button:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0.7;
+}

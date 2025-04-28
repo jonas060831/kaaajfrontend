@@ -8,6 +8,7 @@ import Button from "../../components/Controls/buttons/Button"
 import Icon from "../../components/Icon/Icon"
 import TextInput from "../../components/Controls/inputs/text/TextInput"
 import PasswordInput from "../../components/Controls/inputs/password/PasswordInput"
+import InlineError from "../../components/Errors/InlineError"
 
 const SignUpPage = () => {
 
@@ -21,18 +22,30 @@ const SignUpPage = () => {
     businessName: ''
   })
   const [serverMessage, setServerMessage] = useState<null | string>()
+  const [loading, setLoading] = useState<boolean>(false)
+
   
   const { setUser } = useAuthContext()
   const navigate = useNavigate()
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
+    setLoading(true)
     try {
         const response = await signUp(formData)
         
         setUser(response!)
         navigate('/')
+        setFormData({
+          firstName: '',
+          middleName: '',
+          lastName: '',
+          username: '',
+          password: '',
+          repeatpassword: '',
+          businessName: ''
+        })
+        setLoading(false)
 
     } catch (error: any) {
         
@@ -48,6 +61,8 @@ const SignUpPage = () => {
         } else {
             setServerMessage(`• ${error.message}`)
         }
+
+        setLoading(false)
     }
   }
 
@@ -57,11 +72,32 @@ const SignUpPage = () => {
 
         <div>
           <h1>KaaaJ Advertisement</h1>
+
+          <InlineError
+           icon={<></>}
+           onClose={() => setServerMessage(null)}
+           isOpen={serverMessage ? true : false}
+          >
+
+            <p
+             style={{
+              whiteSpace: 'pre-wrap',
+              fontSize: '14px',
+              lineHeight: '2rem',
+              fontFamily: 'Varela Round'
+             }}
+            >
+              {serverMessage}
+            </p>
+
+          </InlineError>
+          
         </div>
 
         <div>
           <h1>Sign Up</h1>
-          <p style={{ whiteSpace: 'pre-wrap' }}>{serverMessage} {serverMessage ? <button onClick={ () => setServerMessage(null) }>X</button> : null} </p>
+          
+          
           
           <form onSubmit={handleSubmit}>
 
@@ -136,12 +172,13 @@ const SignUpPage = () => {
               onChange={handleChange}
               required
             />
-
-            <Button 
-             title="Sign Up"
-             icon={<Icon category="RightArrow" width={24} height={24}/>}
-             type="submit"
+            <Button
+              title='Sign Up'
+              type='submit'
+              isLoading={loading}
+              icon={<Icon category="RightArrow" width={24} height={24}/> }
             />
+
           </form>
         </div>
     </div>
