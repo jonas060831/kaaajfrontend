@@ -95,7 +95,7 @@ const AccountSwitch = () => {
           <Icon category="Loading" width={16} height={16} />
         ) : (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', maxWidth: '150px' }}>
-            <Icon category="Switch" height={24} width={24}/>
+            <Icon category="Switch" height={20} width={20}/>
             <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {currentAccount?.name}
             </span>
@@ -119,9 +119,13 @@ const AccountSwitch = () => {
                   <Icon category="RedIndicator" width={8} height={8} />
                 }
               </span>
-              {account.name}
+
+              <span style={{ width: '98%' }}>
+                {account.name}
+              </span>
+              
               <span style={{ color: 'green' }}>
-                {account._id === authedUser.accounts.default ? '[default]' : null}
+                {account._id === authedUser.accounts.default ? <Icon  category="DefaultIndicator" width={10} height={10}/> : null}
               </span>
             </div>
           ))}

@@ -24,6 +24,7 @@ import Times from '../../assets/svgs/times.svg?react'
 import Switch from '../../assets/svgs/switch.svg?react'
 import GreenIndicator from '../../assets/svgs/indicators/green_indicator.svg?react'
 import RedIndicator from '../../assets/svgs/indicators/red_indicator.svg?react'
+import DefaultIndicator from '../../assets/svgs/indicators/default_indicator.svg?react'
 
 type IconProps = {
   category: string;
@@ -59,7 +60,8 @@ const iconMap: { [key: string]: JSX.Element } = {
   Times: <Times />,
   Switch: <Switch />,
   GreenIndicator: <GreenIndicator />,
-  RedIndicator: <RedIndicator />
+  RedIndicator: <RedIndicator />,
+  DefaultIndicator: <DefaultIndicator />
 };
 
 const Icon: FC<IconProps> = ({ category, onClick, className, width, height, color }) => {
