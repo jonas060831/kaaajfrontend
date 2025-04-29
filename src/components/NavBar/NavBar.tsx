@@ -10,6 +10,7 @@ import Icon from '../Icon/Icon';
 import { useAuthContext } from '../../contexts/AuthContext';
 import CircleButton from '../Controls/buttons/CircleButton';
 import DilemmaModal from '../Modals/DilemmaModal';
+import AccountSwitch from '../AccountSwitch/AccountSwitch';
 
 const NavBar = () => {
 
@@ -79,7 +80,11 @@ const NavBar = () => {
               </>
             ) : (
             <NavLink className={styles.company_logo} to="/">
-              {user ? 'Dashboard' :  'KaaaJ'}
+              {user ? (
+                  <AccountSwitch />
+              ):
+                'KaaaJ'
+              }
             </NavLink>
             )
           }

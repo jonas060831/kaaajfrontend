@@ -99,21 +99,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       {children}
 
       {isSessionExpired && (
-        // <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
-        //   <div className="bg-white rounded-lg shadow-lg p-6 w-80 text-center">
-        //     <h2 className="text-xl font-semibold mb-2">Session Expired</h2>
-        //     <p className="mb-4">Your session has ended. Please Sign In again.</p>
-        //     <button
-        //       className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        //       onClick={() => {
-        //         setIsSessionExpired(false);
-        //         window.location.href = '/signin';
-        //       }}
-        //     >
-        //       Go To Sign In
-        //     </button>
-        //   </div>
-        // </div>
         <DismissModal
           title='Good Bye!'
           isOpen={isModalOpen}
