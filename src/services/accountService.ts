@@ -23,32 +23,30 @@ const index = async () : Promise<void>=> {
     }
 }
 
-const defaultAccount = async (accountId: String): Promise<void> => {
-
+const fetchAccounts = async (...accountIds: string[]): Promise<any[]> => {
     try {
-
-        const options = {
-            method: 'GET',
-            headers: {
-               'Content-Type': 'application/json',
-               Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`
         }
-        const res = await fetch(`${BASE_URL}/${accountId}`, options)
-
-        const data = await res.json()
-
-        console.log(data)
-
-        return data
-
+      };
+  
+      const fetches = accountIds.map(id =>
+        fetch(`${BASE_URL}/${id}`, options).then(res => {
+          if (!res.ok) throw new Error(`Failed to fetch account ${id}`);
+          return res.json();
+        })
+      );
+  
+      return await Promise.all(fetches);
     } catch (error: any) {
-        throw new Error(error.message)
+      throw new Error(error.message);
     }
-
-}
+  };
 
 export {
     index,
-    defaultAccount
+    fetchAccounts
 }

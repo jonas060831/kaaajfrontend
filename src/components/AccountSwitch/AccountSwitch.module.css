@@ -1,5 +1,59 @@
-.accountSelector {
+.accountSwitcher {
+    position: relative;
+    display: inline-block;
+    font-family: 'Varela Round';
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+
+  .selectedAccount {
     background: none;
-    color: var(--font-color);
     border: none;
-}
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .dropdown {
+    position: absolute;
+    overflow: hidden;
+    top: 100%;
+    left: -17px;
+    background-color: var(--navbar-bg);
+    border: 1px solid rgb(253, 172, 86);
+    z-index: 10;
+    width: 200px;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .accountItem {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .accountItem:hover {
+    background-color: rgba(255, 255, 255, 0.448);
+  }
+  
+  .active {
+    background-color: #ff9b04;
+    font-weight: bold;
+  }
+  
+  .createButton {
+    padding: 8px 12px;
+    width: 100%;
+    background-color: var(--navbar-bg);
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .createButton:hover {
+    background-color: rgba(255, 255, 255, 0.448);
+  }
+  
