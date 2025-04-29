@@ -22,6 +22,8 @@ import AdManager from '../../assets/svgs/admanager.svg?react'
 import Reports from '../../assets/svgs/reports.svg?react'
 import Times from '../../assets/svgs/times.svg?react'
 import Switch from '../../assets/svgs/switch.svg?react'
+import GreenIndicator from '../../assets/svgs/indicators/green_indicator.svg?react'
+import RedIndicator from '../../assets/svgs/indicators/red_indicator.svg?react'
 
 type IconProps = {
   category: string;
@@ -55,8 +57,9 @@ const iconMap: { [key: string]: JSX.Element } = {
   AdManager: <AdManager />,
   Reports: <Reports />,
   Times: <Times />,
-  Switch: <Switch />
-
+  Switch: <Switch />,
+  GreenIndicator: <GreenIndicator />,
+  RedIndicator: <RedIndicator />
 };
 
 const Icon: FC<IconProps> = ({ category, onClick, className, width, height, color }) => {
