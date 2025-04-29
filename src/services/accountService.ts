@@ -44,9 +44,32 @@ const fetchAccounts = async (...accountIds: string[]): Promise<any[]> => {
     } catch (error: any) {
       throw new Error(error.message);
     }
-  };
+};
+
+const fetchAccountById = async (accountId: string): Promise<any> => {
+  try {
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+         Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }
+
+    const result = await fetch(`${BASE_URL}/${accountId}`, options)
+
+    const data = await result.json()
+
+    return data
+
+
+  } catch (error: any) {
+    throw new Error(error.message)
+  }
+}
 
 export {
     index,
-    fetchAccounts
+    fetchAccounts,
+    fetchAccountById
 }

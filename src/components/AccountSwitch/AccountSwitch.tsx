@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { profile } from "../../services/userService";
-import { fetchAccounts } from "../../services/accountService";
+import { fetchAccountById, fetchAccounts } from "../../services/accountService";
 import { useAuthContext } from "../../contexts/AuthContext";
 import Icon from "../Icon/Icon";
 import styles from "./AccountSwitch.module.css";
@@ -30,7 +30,6 @@ const AccountSwitch = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [loading, setLoading] = useState(false);
   const hideTimeout = useRef<NodeJS.Timeout | null>(null);
-
 
   useEffect(() => {
     fetchData();
@@ -66,7 +65,6 @@ const AccountSwitch = () => {
 
       //filter the default account by this user from all accounts fetch
       const defaultAccount = allAccounts.find(account => account._id === loggedInUser.accounts.default)
-
       setCurrentAccount(defaultAccount ?? null);
     } catch (error) {
       console.error("Error fetching accounts:", error);
@@ -75,8 +73,12 @@ const AccountSwitch = () => {
     }
   };
 
-  const handleAccountClick = (account: Account) => {
-    setCurrentAccount(account);
+  const handleAccountClick = async (account: Account) => {
+
+    const updatedAccount = await fetchAccountById(account._id)
+
+    setCurrentAccount(updatedAccount);
+
     setShowDropdown(false);
   };
 

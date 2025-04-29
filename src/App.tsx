@@ -11,6 +11,7 @@ import ContactPage from './pages/unprotected/ContactPage';
 
 import styles from './App.module.css';
 import AarloChatButton from './components/AarloButton/AarloChatButton';
+import Manager from './pages/protected/Manager';
 
 const App = () => {
   const { user } = useAuthContext();
@@ -27,6 +28,7 @@ const App = () => {
           <Route path='/contact' element={<ContactPage />} />
 
           {/* protected routes could go here */}
+          <Route path='/manager' element={user ? <Manager /> : <><h1>Unauthorized</h1></> } />
 
           {/* fallback */}
           <Route path='*' element={<ErrorPage />} />

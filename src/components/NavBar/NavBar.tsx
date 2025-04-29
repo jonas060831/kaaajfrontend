@@ -79,13 +79,13 @@ const NavBar = () => {
                 
               </>
             ) : (
-            <NavLink className={styles.company_logo} to="/">
+            <div className={styles.company_logo}>
               {user ? (
                   <AccountSwitch />
               ):
                 'KaaaJ'
               }
-            </NavLink>
+            </div>
             )
           }
 
