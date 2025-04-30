@@ -1,0 +1,13 @@
+
+.container {
+    width: 100%;
+    max-width: 850px;
+    background-color: var(--ui-background-color);
+    border-radius: 1rem;
+    margin: 0px auto;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}

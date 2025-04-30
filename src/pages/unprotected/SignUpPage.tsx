@@ -8,32 +8,44 @@ import Button from "../../components/Controls/buttons/Button"
 import Icon from "../../components/Icon/Icon"
 import TextInput from "../../components/Controls/inputs/text/TextInput"
 import PasswordInput from "../../components/Controls/inputs/password/PasswordInput"
+import InlineError from "../../components/Errors/InlineError"
 
 const SignUpPage = () => {
 
   const [formData, setFormData] = useState({
-    firstname: '',
-    middlename: '',
-    lastname: '',
+    firstName: '',
+    middleName: '',
+    lastName: '',
     username: '',
     password: '',
     repeatpassword: '',
-    businessname: ''
+    businessName: ''
   })
   const [serverMessage, setServerMessage] = useState<null | string>()
+  const [loading, setLoading] = useState<boolean>(false)
+
   
   const { setUser } = useAuthContext()
   const navigate = useNavigate()
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
-    console.log(formData)
+    setLoading(true)
     try {
         const response = await signUp(formData)
         
-        setUser(response)
+        setUser(response!)
         navigate('/')
+        setFormData({
+          firstName: '',
+          middleName: '',
+          lastName: '',
+          username: '',
+          password: '',
+          repeatpassword: '',
+          businessName: ''
+        })
+        setLoading(false)
 
     } catch (error: any) {
         
@@ -49,6 +61,8 @@ const SignUpPage = () => {
         } else {
             setServerMessage(`• ${error.message}`)
         }
+
+        setLoading(false)
     }
   }
 
@@ -58,11 +72,32 @@ const SignUpPage = () => {
 
         <div>
           <h1>KaaaJ Advertisement</h1>
+
+          <InlineError
+           icon={<></>}
+           onClose={() => setServerMessage(null)}
+           isOpen={serverMessage ? true : false}
+          >
+
+            <p
+             style={{
+              whiteSpace: 'pre-wrap',
+              fontSize: '14px',
+              lineHeight: '2rem',
+              fontFamily: 'Varela Round'
+             }}
+            >
+              {serverMessage}
+            </p>
+
+          </InlineError>
+          
         </div>
 
         <div>
           <h1>Sign Up</h1>
-          <p style={{ whiteSpace: 'pre-wrap' }}>{serverMessage} {serverMessage ? <button onClick={ () => setServerMessage(null) }>X</button> : null} </p>
+          
+          
           
           <form onSubmit={handleSubmit}>
 
@@ -70,19 +105,19 @@ const SignUpPage = () => {
             
             <div style={{ display: 'flex', gap: '1rem', flex: '1fr 0.5fr' }}>
               <TextInput
-                name='firstname'
+                name='firstName'
                 id='signUpPageFirstName'
                 label='First Name'
-                value={formData.firstname}
+                value={formData.firstName}
                 onChange={handleChange}
                 required
               />
 
               <TextInput
-                name='middlename'
+                name='middleName'
                 id='signUpPageMiddleName'
                 label='Middle Name'
-                value={formData.middlename}
+                value={formData.middleName}
                 onChange={handleChange}
               />
             </div>
@@ -90,10 +125,10 @@ const SignUpPage = () => {
             
 
             <TextInput
-              name='lastname'
+              name='lastName'
               id='signUpPageLastName'
               label='Last Name'
-              value={formData.lastname}
+              value={formData.lastName}
               onChange={handleChange}
               required
             />
@@ -133,16 +168,17 @@ const SignUpPage = () => {
               name='businessName'
               id='signUpPageBusinnessName'
               label='Business Name'
-              value={formData.businessname}
+              value={formData.businessName}
               onChange={handleChange}
               required
             />
-
-            <Button 
-             title="Sign Up"
-             icon={<Icon category="RightArrow" width={24} height={24}/>}
-             type="submit"
+            <Button
+              title='Sign Up'
+              type='submit'
+              isLoading={loading}
+              icon={<Icon category="RightArrow" width={24} height={24}/> }
             />
+
           </form>
         </div>
     </div>

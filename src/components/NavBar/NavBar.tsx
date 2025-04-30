@@ -10,6 +10,7 @@ import Icon from '../Icon/Icon';
 import { useAuthContext } from '../../contexts/AuthContext';
 import CircleButton from '../Controls/buttons/CircleButton';
 import DilemmaModal from '../Modals/DilemmaModal';
+import AccountSwitch from '../AccountSwitch/AccountSwitch';
 
 const NavBar = () => {
 
@@ -78,9 +79,13 @@ const NavBar = () => {
                 
               </>
             ) : (
-            <NavLink className={styles.company_logo} to="/">
-              {user ? 'Dashboard' :  'KaaaJ'}
-            </NavLink>
+            <div className={styles.company_logo}>
+              {user ? (
+                  <AccountSwitch />
+              ):
+                'KaaaJ'
+              }
+            </div>
             )
           }
 
@@ -241,10 +246,10 @@ const NavBar = () => {
             </li>
           </NavLink>
 
-          <NavLink to="/admanager" onClick={() => toggleRightMenu()}>
+          <NavLink to="/manager" onClick={() => toggleRightMenu()}>
             <li style={{ display: user ? '' : 'none' }}>
               <Icon category='AdManager' width={20} height={20}/>
-              Ad Manager
+              Manager
             </li>
           </NavLink>
 

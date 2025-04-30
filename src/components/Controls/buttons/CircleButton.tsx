@@ -20,7 +20,7 @@ const CircleButton:FC<CircleButtonProps> = ({ icon, onClick, width=50, height=50
     <button
      type={type}
      disabled={isLoading}
-     className={`${styles.circle_button} ${styles}.${className} ${styles[className]} ${isLoading ? styles.loading : ''}`}
+     className={`${styles.circle_button} ${styles[className]} ${isLoading ? styles.loading : ''}`}
      onClick={onClick}
      style={{ width, height }}
     >
