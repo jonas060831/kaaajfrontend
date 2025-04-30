@@ -246,10 +246,10 @@ const NavBar = () => {
             </li>
           </NavLink>
 
-          <NavLink to="/admanager" onClick={() => toggleRightMenu()}>
+          <NavLink to="/manager" onClick={() => toggleRightMenu()}>
             <li style={{ display: user ? '' : 'none' }}>
               <Icon category='AdManager' width={20} height={20}/>
-              Ad Manager
+              Manager
             </li>
           </NavLink>
 

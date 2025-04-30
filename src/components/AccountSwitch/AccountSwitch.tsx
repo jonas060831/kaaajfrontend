@@ -53,18 +53,23 @@ const AccountSwitch = () => {
     if (!user?._id) return;
 
     setLoading(true);
+    setCurrentAccount(null)
     try {
+
+      //get the profile to get other fields
       const { user: loggedInUser } = await profile(user._id);
       setAuthedUser(loggedInUser);
 
       //loop thru all users account and get only their id
       const accountIds = loggedInUser.accounts.list.map((account: Account) => account._id)
 
-      //fetch each data of that id
+      //fetch each data of that account id
       const allAccounts = await fetchAccounts(...accountIds)
 
       //filter the default account by this user from all accounts fetch
       const defaultAccount = allAccounts.find(account => account._id === loggedInUser.accounts.default)
+
+
       setCurrentAccount(defaultAccount ?? null);
     } catch (error) {
       console.error("Error fetching accounts:", error);

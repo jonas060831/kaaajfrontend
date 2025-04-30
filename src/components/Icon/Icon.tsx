@@ -25,6 +25,7 @@ import Switch from '../../assets/svgs/switch.svg?react'
 import GreenIndicator from '../../assets/svgs/indicators/green_indicator.svg?react'
 import RedIndicator from '../../assets/svgs/indicators/red_indicator.svg?react'
 import DefaultIndicator from '../../assets/svgs/indicators/default_indicator.svg?react'
+import Plus from '../../assets/svgs/plus.svg?react'
 
 type IconProps = {
   category: string;
@@ -61,7 +62,8 @@ const iconMap: { [key: string]: JSX.Element } = {
   Switch: <Switch />,
   GreenIndicator: <GreenIndicator />,
   RedIndicator: <RedIndicator />,
-  DefaultIndicator: <DefaultIndicator />
+  DefaultIndicator: <DefaultIndicator />,
+  Plus: <Plus />
 };
 
 const Icon: FC<IconProps> = ({ category, onClick, className, width, height, color }) => {
