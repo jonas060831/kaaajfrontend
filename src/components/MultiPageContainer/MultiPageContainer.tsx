@@ -49,7 +49,7 @@ const MultiPageContainer: FC<MultiPageContainerProps> = ({ pages, name, function
         ))}
       </div>
 
-      {(name === 'createFirstAd' && currentPage !== 0) && (
+      {(name === 'createFirstAd' && currentPage !== 0 && currentPage !== 2) && (
         <Button
           title="Next"
           onClick={handleNext}
