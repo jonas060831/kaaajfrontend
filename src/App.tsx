@@ -11,7 +11,7 @@ import ContactPage from './pages/unprotected/ContactPage';
 
 import styles from './App.module.css';
 import AarloChatButton from './components/AarloButton/AarloChatButton';
-import Manager from './pages/protected/manager/Manager';
+import Manager from './pages/protected/manager/ManagerPage';
 
 const App = () => {
   const { user } = useAuthContext();

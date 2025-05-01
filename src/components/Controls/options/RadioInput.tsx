@@ -50,10 +50,6 @@ export const RadioInput:FC<RadioInputProps> = ({ name, options, setValue }) => {
           {opt.label}
         </label>
       ))}
-
-      {/* <p>
-        You selected: <strong>{selected}</strong>
-      </p> */}
     </fieldset>
   )
 }

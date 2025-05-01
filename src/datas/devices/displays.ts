@@ -29,9 +29,9 @@ const displays:IDisplays[] = [
             ]
         },
         videos: {
-            default: 'public/videos/displays/tld.mp4',
+            default: '/videos/displays/tld.mp4',
             list: [
-                'public/videos/displays/tld.mp4'
+                '/videos/displays/tld.mp4'
             ]
         }
     },
@@ -51,9 +51,9 @@ const displays:IDisplays[] = [
             ]
         },
         videos: {
-            default: 'public/videos/displays/tld.mp4',
+            default: '/videos/displays/tld.mp4',
             list: [
-                'public/videos/displays/tld.mp4'
+                '/videos/displays/tld.mp4'
             ]
         }
     },
@@ -73,9 +73,9 @@ const displays:IDisplays[] = [
             ]
         },
         videos: {
-            default: 'public/videos/displays/tld.mp4',
+            default: '/videos/displays/tld.mp4',
             list: [
-                'public/videos/displays/tld.mp4'
+                '/videos/displays/tld.mp4'
             ]
         }
     },
@@ -95,9 +95,9 @@ const displays:IDisplays[] = [
             ]
         },
         videos: {
-            default: 'public/videos/displays/tld.mp4',
+            default: '/videos/displays/tld.mp4',
             list: [
-                'public/videos/displays/tld.mp4'
+                '/videos/displays/tld.mp4'
             ]
         }
     }

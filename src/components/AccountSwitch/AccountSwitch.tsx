@@ -68,9 +68,9 @@ const AccountSwitch = () => {
 
       //filter the default account by this user from all accounts fetch
       const defaultAccount = allAccounts.find(account => account._id === loggedInUser.accounts.default)
-
-
+      
       setCurrentAccount(defaultAccount ?? null);
+      
     } catch (error) {
       console.error("Error fetching accounts:", error);
     } finally {

@@ -6,11 +6,11 @@ import displays, { IDisplays } from '../../../../datas/devices/displays'
 import { Option, RadioInput } from '../../../../components/Controls/options/RadioInput'
 
 
-type AvailableDevicesProps = {
+type AvailableDisplaysProps = {
     handleForm: (func: any) => void
 }
 
-const AvailableDevices:FC<AvailableDevicesProps> = ({ handleForm }) => {
+const AvailableDisplays:FC<AvailableDisplaysProps> = ({ handleForm }) => {
  
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -63,6 +63,7 @@ const AvailableDevices:FC<AvailableDevicesProps> = ({ handleForm }) => {
   useEffect(() => {
     handleForm(selectedDisplay)
   }, [])
+  
   const handleSelection = (selectedDisplay: any) => {
     setSelectedDisplay(selectedDisplay)
     handleForm(selectedDisplay)
@@ -98,7 +99,8 @@ const AvailableDevices:FC<AvailableDevicesProps> = ({ handleForm }) => {
                   autoPlay 
                   loop 
                   muted 
-                  playsInline 
+                  playsInline
+                  preload='auto' 
                 />
             </div>
       </div>
@@ -106,4 +108,4 @@ const AvailableDevices:FC<AvailableDevicesProps> = ({ handleForm }) => {
   )
 }
 
-export default AvailableDevices
+export default AvailableDisplays

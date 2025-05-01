@@ -4,10 +4,11 @@ import styles from './Manager.module.css';
 import MultiPageContainer from "../../../components/MultiPageContainer/MultiPageContainer";
 import { FormEvent, useMemo, useRef, useState } from "react";
 import IntroAd from "./components/IntroAd";
-import AvailableDevices from "./components/AvailableDevices";
 import GoLive from "./components/GoLive";
+import SelectUploadFirstAd from "./components/SelectUploadFirstAd";
+import AvailableDisplays from "./components/AvailableDisplays";
 
-const Manager = () => {
+const ManagerPage = () => {
   
   const [formData, setFormData] = useState({
     selectedDisplay: {}
@@ -30,7 +31,8 @@ const Manager = () => {
 
   const pages = useMemo(() => [
     <IntroAd beginAd={callFunctionOne}/>,
-    <AvailableDevices handleForm={handleSelectedDisplay}/>,
+    <AvailableDisplays handleForm={handleSelectedDisplay}/>,
+    <SelectUploadFirstAd />,
     <GoLive/>
   ], []); // stable reference
 
@@ -60,4 +62,4 @@ const Manager = () => {
   );
 };
 
-export default Manager;
+export default ManagerPage;
