@@ -58,6 +58,12 @@ const AccountSwitch = () => {
 
       //get the profile to get other fields
       const { user: loggedInUser } = await profile(user._id);
+
+      if (!loggedInUser.accounts?.list) {
+        console.error("No accounts list found on user profile:", loggedInUser);
+        return;
+      }
+
       setAuthedUser(loggedInUser);
 
       //loop thru all users account and get only their id
