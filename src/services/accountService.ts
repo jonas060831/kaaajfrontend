@@ -23,7 +23,7 @@ const index = async () : Promise<void>=> {
     }
 }
 
-const fetchAccounts = async (...accountIds: string[]): Promise<any[]> => {
+const fetchAccounts = async (accountIds: string[]): Promise<any[]> => {
     try {
       const options = {
         method: 'GET',

@@ -69,6 +69,8 @@ const AccountSwitch = () => {
       //loop thru all users account and get only their id
       const accountIds = loggedInUser.accounts.list.map((account: Account) => account._id)
 
+      console.log(accountIds)
+
       //fetch each data of that account id
       const allAccounts = await fetchAccounts(accountIds)
 
