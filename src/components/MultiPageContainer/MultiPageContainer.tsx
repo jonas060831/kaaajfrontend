@@ -1,6 +1,5 @@
 import { FC, JSX, useEffect, useState } from 'react';
 import Button from '../Controls/buttons/Button';
-import Icon from '../Icon/Icon';
 
 type MultiPageContainerProps = {
   pages: JSX.Element[];

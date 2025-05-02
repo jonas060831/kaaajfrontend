@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'; // use react-router-dom
+import { Routes, Route, Navigate } from 'react-router-dom'; // use react-router-dom
 import NavBar from './components/NavBar/NavBar';
 import { useAuthContext } from './contexts/AuthContext';
 import DashboardPage from './pages/protected/DashboardPage';
@@ -28,7 +28,7 @@ const App = () => {
           <Route path='/contact' element={<ContactPage />} />
 
           {/* protected routes could go here */}
-          <Route path='/manager' element={user ? <Manager /> : <><h1>Unauthorized</h1></> } />
+          <Route path='/manager' element={user ? <Manager /> : <Navigate to="/signin?redirect=/manager" /> } />
 
           {/* fallback */}
           <Route path='*' element={<ErrorPage />} />
