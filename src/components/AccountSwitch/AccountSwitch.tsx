@@ -29,25 +29,26 @@ const AccountSwitch = () => {
   const hideTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    if (!user?._id || authedUser) return;
+  
     const fetchData = async () => {
-      if (!user?._id) return;
-
+      setLoading(true);
       try {
         const { user: loggedInUser } = await profile(user._id);
-
+  
         if (!loggedInUser?.accounts?.list?.length) {
           console.warn("User accounts list is undefined or empty", loggedInUser.accounts);
           setAuthedUser(null);
           setCurrentAccount(null);
           return;
         }
-
+  
         setAuthedUser(loggedInUser);
-
+  
         const accountIds = loggedInUser.accounts.list.map((acc: Account) => acc._id);
         const allAccounts = await fetchAccounts(accountIds);
         const defaultAccount = allAccounts.find(account => account._id === loggedInUser.accounts.default);
-
+  
         setCurrentAccount(defaultAccount ?? null);
       } catch (error) {
         console.error("Error fetching accounts:", error);
@@ -55,9 +56,10 @@ const AccountSwitch = () => {
         setLoading(false);
       }
     };
-
+  
     fetchData();
-  }, [user?._id, setCurrentAccount]);
+  }, [user?._id]);
+  
 
   const handleMouseEnter = () => {
     if (hideTimeout.current) clearTimeout(hideTimeout.current);
