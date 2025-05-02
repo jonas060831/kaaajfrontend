@@ -1,0 +1,35 @@
+.radio {
+    accent-color: var(--button-bg-color);
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+.radio:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+.radio_label {
+    display: flex;
+    gap: 1rem;
+    cursor: pointer
+}
+
+.radio_label:hover {
+    opacity: 0.7;
+}
+.radio_label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.radio_label:has(input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.radio_label:hover {
+  opacity: 0.8;
+}

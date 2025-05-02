@@ -83,7 +83,7 @@ const NavBar = () => {
               {user ? (
                   <AccountSwitch />
               ):
-                'KaaaJ'
+                <NavLink to="/">KaaaJ</NavLink>
               }
             </div>
             )
