@@ -1,6 +1,6 @@
 import { useAuthContext } from "../../../contexts/AuthContext";
 import Icon from "../../../components/Icon/Icon";
-import styles from './Manager.module.css';
+import styles from './ManagerPage.module.css';
 import MultiPageContainer from "../../../components/MultiPageContainer/MultiPageContainer";
 import { FormEvent, useMemo, useRef, useState } from "react";
 import IntroAd from "./components/IntroAd";
