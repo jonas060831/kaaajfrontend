@@ -64,7 +64,7 @@ const AccountSwitch = () => {
       const accountIds = loggedInUser.accounts.list.map((account: Account) => account._id)
 
       //fetch each data of that account id
-      const allAccounts = await fetchAccounts(...accountIds)
+      const allAccounts = await fetchAccounts(accountIds)
 
       //filter the default account by this user from all accounts fetch
       const defaultAccount = allAccounts.find(account => account._id === loggedInUser.accounts.default)
@@ -90,6 +90,8 @@ const AccountSwitch = () => {
   const handleCreateAccount = () => {
     alert("Redirect to account creation flow");
   };
+
+  console.log("Authed user accounts list:", authedUser?.accounts?.list);
 
   return (
     <div
