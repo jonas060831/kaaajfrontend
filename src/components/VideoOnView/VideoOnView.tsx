@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState, FC } from 'react';
 
+import styles from './VideoOnview.module.css'
+
 type VideoOnViewProps = {
     src: string;
 }
@@ -37,10 +39,15 @@ const VideoOnView:FC<VideoOnViewProps> = ({ src, ...props }) => {
   }, []);
 
   return (
-    <video ref={videoRef} controls={false} muted loop {...props} >
+    <video
+     className={styles.video_container}
+     ref={videoRef}
+     controls={false}
+     muted
+     loop {...props}
+    >
       <source src={src} type="video/mp4" />
       Your browser does not support the video tag.
-    
 </video>
   );
 }

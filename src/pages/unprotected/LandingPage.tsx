@@ -12,7 +12,7 @@ const LandingPage = () => {
          slides={slides}
          height="75vh"
          autoPlay={true}
-         interval={8000}
+         interval={16000}
         />
       </header>
 
