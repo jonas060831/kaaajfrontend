@@ -30,7 +30,7 @@ export const slides = [
     {
       content: (
         <div className={styles.slide1} style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <VideoOnView src='public/videos/displays/flexible_tld.mp4' />
+          <VideoOnView src='/videos/displays/flexible_tld.mp4' />
         </div>
       ),
       interval: 16000
