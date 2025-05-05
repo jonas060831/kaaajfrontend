@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+type Slide = {
+  content: React.ReactNode;
+  interval?: number;
+};
+
 type CarouselProps = {
-  slides: React.ReactNode[];
+  slides: Slide[];
   width?: string;
   height?: string;
   autoPlay?: boolean;
-  interval?: number;
+  interval?: number; // Default fallback
 };
+
 
 const Carousel: React.FC<CarouselProps> = ({
   slides,
@@ -36,11 +42,16 @@ const Carousel: React.FC<CarouselProps> = ({
 
   useEffect(() => {
     if (!autoPlay) return;
+  
+    const currentSlideInterval = slides[currentIndex].interval ?? interval;
+  
     const timer = setInterval(() => {
       goToNext();
-    }, interval);
+    }, currentSlideInterval);
+  
     return () => clearInterval(timer);
-  }, [currentIndex, autoPlay, interval]);
+  }, [currentIndex, autoPlay, slides, interval]);
+  
 
   const variants = {
     enter: (dir: number) => ({
@@ -97,7 +108,8 @@ const Carousel: React.FC<CarouselProps> = ({
             cursor: 'grab',
         }}
         >
-        {slides[currentIndex]}
+        {slides[currentIndex].content}
+
         </motion.div>
       </AnimatePresence>
 
