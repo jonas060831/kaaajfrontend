@@ -22,7 +22,7 @@ export const slides = [
         </div>
 
     </div>,
-    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div className={styles.slide1} style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <VideoOnView src='public/videos/displays/flexible_tld.mp4' />
     </div>,
     <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

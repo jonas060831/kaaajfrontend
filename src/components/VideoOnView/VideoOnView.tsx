@@ -44,6 +44,7 @@ const VideoOnView:FC<VideoOnViewProps> = ({ src, ...props }) => {
      ref={videoRef}
      controls={false}
      muted
+     playsInline
      loop {...props}
     >
       <source src={src} type="video/mp4" />
