@@ -1,6 +1,5 @@
 import { FC, JSX, useEffect, useState } from 'react';
 import Button from '../Controls/buttons/Button';
-import Icon from '../Icon/Icon';
 
 type MultiPageContainerProps = {
   pages: JSX.Element[];
@@ -15,6 +14,14 @@ const MultiPageContainer: FC<MultiPageContainerProps> = ({ pages, name, function
 
     setCurrentPage((prev) => {
       const newPage = (prev + 1) % pages.length;
+      return newPage;
+    });
+  };
+
+  const handlePrevious = () => {
+
+    setCurrentPage((prev) => {
+      const newPage = (prev - 1) % pages.length;
       return newPage;
     });
   };
@@ -50,11 +57,18 @@ const MultiPageContainer: FC<MultiPageContainerProps> = ({ pages, name, function
       </div>
 
       {(name === 'createFirstAd' && currentPage !== 0 && currentPage !== 3) && (
-        <Button
-          title="Next"
-          onClick={handleNext}
-          icon={<Icon category='RightArrow' width={24} height={24} />}
-        />
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <Button
+            title="Previous"
+            onClick={handlePrevious}
+            icon={<></>}
+          />
+          <Button
+            title="Next"
+            onClick={handleNext}
+            icon={<></>}
+          />
+        </div>
       )}
     </div>
   );

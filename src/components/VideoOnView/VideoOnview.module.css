@@ -1,0 +1,8 @@
+.video_container {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+}
+  

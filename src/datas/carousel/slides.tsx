@@ -1,4 +1,5 @@
 
+import VideoOnView from '../../components/VideoOnView/VideoOnView'
 import styles from './slides.module.css'
 export const slides = [
     <div
@@ -21,8 +22,8 @@ export const slides = [
         </div>
 
     </div>,
-    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      456
+    <div className={styles.slide1} style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <VideoOnView src='public/videos/displays/flexible_tld.mp4' />
     </div>,
     <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       789

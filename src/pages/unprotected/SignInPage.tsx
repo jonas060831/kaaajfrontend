@@ -6,15 +6,18 @@ import PasswordInput from '../../components/Controls/inputs/password/PasswordInp
 import Icon from '../../components/Icon/Icon'
 import { signIn } from '../../services/authService'
 import { useAuthContext } from '../../contexts/AuthContext'
-import { useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import DismissModal from '../../components/Modals/DismissModal'
 import CircleButton from '../../components/Controls/buttons/CircleButton'
 import { Link } from 'react-router-dom'
 
 const SignInPage = () => {
 
+  const { search } = useLocation()
+  const queryParams = new URLSearchParams(search)
   const {  setUser } = useAuthContext()
   const navigate = useNavigate()
+
 
   const [formData, setFormData] = useState({ username: '', password: '' })
   const [loading, setLoading] = useState<boolean>(false)
@@ -30,10 +33,15 @@ const SignInPage = () => {
     setLoading(true)
     try {
 
+      const redirectUrl = queryParams.get('redirectUrl')
       const response = await signIn(formData)
-
+      
       setUser(response)
-      navigate('/')
+      
+      if(!redirectUrl) navigate('/')
+      else navigate(redirectUrl)
+
+
     } catch (error: any) {
       console.log(error)
       setIsModalOpen(true)

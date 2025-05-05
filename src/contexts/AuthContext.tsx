@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react';
 import DismissModal from '../components/Modals/DismissModal';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 // --- Interfaces ---
 interface User {
@@ -74,6 +74,10 @@ interface AuthProviderProps {
 }
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+
+  const { pathname } = useLocation()
+
+
   const [user, setUser] = useState<User | null>(getUserFromToken());
   const [currentAccount, _setCurrentAccount] = useState<Account | null>(getStoredAccount());
 
@@ -138,7 +142,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           onClose={() => {
             setIsModalOpen(false);
             clearUser();
-            navigate('/signin');
+            navigate(`/signin?redirectUrl=${pathname}`);
           }}
           buttonTitle='Ok'
         >
