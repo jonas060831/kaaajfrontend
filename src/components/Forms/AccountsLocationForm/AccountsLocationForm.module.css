@@ -5,6 +5,36 @@
     width: 100%;
 }
 
+.autocompleteWrapper {
+    position: relative;
+    width: 50%; /* Match the input width if needed */
+  }
+  
+  .autocompleteResults {
+    position: absolute;
+    top: 80%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--font-color);
+    background-color: var(--ui-background-color);
+    z-index: 1000;
+    color: var(--font-color);
+  }
+  
+  .autocompleteResult {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .autocompleteResult:hover {
+    opacity: 1;
+  }
+  
+
+  
+
 
 
 /* Desktop only */

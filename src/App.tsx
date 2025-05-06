@@ -14,6 +14,9 @@ import AarloChatButton from './components/AarloButton/AarloChatButton';
 import ManagerPage from './pages/protected/manager/ManagerPage';
 import AccountPage from './pages/protected/account/AccountPage';
 
+import { LoadScript } from '@react-google-maps/api';
+
+
 const App = () => {
   const { user } = useAuthContext();
 
@@ -21,6 +24,10 @@ const App = () => {
     <div className={styles.appWrapper}>
       <NavBar />
       <main className={styles.mainContent}>
+       <LoadScript
+        googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+        libraries={['places']}
+       >
         <Routes>
 
           {/* available for both auth and non auth users */}
@@ -47,6 +54,7 @@ const App = () => {
           <Route path='*' element={<ErrorPage />} />
 
         </Routes>
+        </LoadScript>
       </main>
       <Footer />
       <AarloChatButton />
