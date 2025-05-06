@@ -1,7 +1,11 @@
+import AccountsLocationForm from "../../components/Forms/AccountsLocationForm/AccountsLocationForm"
 
 const DashboardPage = () => {
   return (
-    <div>DashboardPage</div>
+    <div>
+        {/* do not remove on future versions*/}
+        <AccountsLocationForm />
+    </div>
   )
 }
 

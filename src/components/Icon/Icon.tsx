@@ -26,6 +26,7 @@ import GreenIndicator from '../../assets/svgs/indicators/green_indicator.svg?rea
 import RedIndicator from '../../assets/svgs/indicators/red_indicator.svg?react'
 import DefaultIndicator from '../../assets/svgs/indicators/default_indicator.svg?react'
 import Plus from '../../assets/svgs/plus.svg?react'
+import Check from '../../assets/svgs/check.svg?react'
 
 type IconProps = {
   category: string;
@@ -63,7 +64,8 @@ const iconMap: { [key: string]: JSX.Element } = {
   GreenIndicator: <GreenIndicator />,
   RedIndicator: <RedIndicator />,
   DefaultIndicator: <DefaultIndicator />,
-  Plus: <Plus />
+  Plus: <Plus />,
+  Check: <Check />
 };
 
 const Icon: FC<IconProps> = ({ category, onClick, className, width, height, color }) => {
