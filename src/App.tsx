@@ -11,7 +11,8 @@ import ContactPage from './pages/unprotected/ContactPage';
 
 import styles from './App.module.css';
 import AarloChatButton from './components/AarloButton/AarloChatButton';
-import Manager from './pages/protected/manager/ManagerPage';
+import ManagerPage from './pages/protected/manager/ManagerPage';
+import AccountPage from './pages/protected/account/AccountPage';
 
 const App = () => {
   const { user } = useAuthContext();
@@ -21,17 +22,30 @@ const App = () => {
       <NavBar />
       <main className={styles.mainContent}>
         <Routes>
-          {/* unprotected */}
-          <Route path='/' element={user ? <DashboardPage /> : <LandingPage />} />
-          <Route path='/signup' element={<SignUpPage />} />
-          <Route path='/signin' element={<SignInPage />} />
-          <Route path='/contact' element={<ContactPage />} />
 
-          {/* protected routes could go here */}
-          <Route path='/manager' element={user ? <Manager /> : <><h1>Unauthorized</h1></> } />
+          {/* available for both auth and non auth users */}
+          <Route path='/' element={user ? <DashboardPage /> : <LandingPage />} />
+
+          {
+            user ? (
+              <>
+                {/* protected routes */}
+                <Route path='/manager' element={<ManagerPage />} />
+                <Route path='/account' element={ <AccountPage/> }/>
+              </>
+            ) : (
+              <>
+                {/* unprotected */}
+                <Route path='/signup' element={<SignUpPage />} />
+                <Route path='/signin' element={<SignInPage />} />
+                <Route path='/contact' element={<ContactPage />} />
+              </>
+            )
+          }
 
           {/* fallback */}
           <Route path='*' element={<ErrorPage />} />
+
         </Routes>
       </main>
       <Footer />
