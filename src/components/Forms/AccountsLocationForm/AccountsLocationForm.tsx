@@ -85,7 +85,7 @@ const AccountsLocationForm = () => {
           }
         }
       );
-    }, 300);
+    }, 1000);
   }, [addressQuery]);
 
   useEffect(() => {

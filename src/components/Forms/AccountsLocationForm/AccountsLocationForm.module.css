@@ -21,11 +21,16 @@
     background-color: var(--ui-background-color);
     z-index: 1000;
     color: var(--font-color);
+    border-radius: 5px;
   }
   
   .autocompleteResult {
     padding: 10px;
     cursor: pointer;
+  }
+
+  .autocompleteResult:hover {
+    color: var(--button-bg-color);
   }
   
   .autocompleteResult:hover {
