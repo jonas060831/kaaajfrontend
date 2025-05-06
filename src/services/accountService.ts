@@ -68,8 +68,29 @@ const fetchAccountById = async (accountId: string): Promise<any> => {
   }
 }
 
+const updateAccountById = async (accountId: string, accountData: any): Promise<any> => {
+  try {
+      const options = {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(accountData)
+      }
+
+      const res = await fetch(`${BASE_URL}/${accountId}`, options)
+
+      return res.json()
+
+  } catch (error: any) {
+    return { error: error.message }
+  }
+}
+
 export {
     index,
     fetchAccounts,
-    fetchAccountById
+    fetchAccountById,
+    updateAccountById
 }

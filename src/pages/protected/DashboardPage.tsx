@@ -3,6 +3,7 @@ import AccountsLocationForm from "../../components/Forms/AccountsLocationForm/Ac
 const DashboardPage = () => {
   return (
     <div>
+        {/* do not remove on future versions*/}
         <AccountsLocationForm />
     </div>
   )
