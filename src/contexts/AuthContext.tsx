@@ -9,7 +9,7 @@ import DismissModal from '../components/Modals/DismissModal';
 import { useLocation, useNavigate } from 'react-router';
 
 // --- Interfaces ---
-interface User {
+export interface User {
   username: string;
   _id: string;
   role: string;

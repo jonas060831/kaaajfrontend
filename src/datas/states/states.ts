@@ -71,4 +71,12 @@ const states: statesType = {
   ]
 }
 
+export const findStateByFullName = (fullName: string) => {
+  for (const region in states) {
+    const state = states[region as keyof typeof states].find(s => s.full === fullName);
+    if (state) return state;
+  }
+  return null;
+};
+
 export default states

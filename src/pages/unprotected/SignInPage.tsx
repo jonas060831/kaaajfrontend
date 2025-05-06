@@ -62,7 +62,7 @@ const SignInPage = () => {
             <h1>Sign In</h1>
             
             <h6 style={{ marginTop: '-1rem'}} >
-              username and password credentials
+              LED Partners Login
             </h6>
             
             <form onSubmit={handleSubmit}>
@@ -93,7 +93,7 @@ const SignInPage = () => {
               />
 
               <br /><br />
-              <Link to="/signup" style={{ color: 'var(--font-color)' }} >Sign Up ?</Link>
+              <Link className={styles.mobile_signup_link} to="/signup" style={{ color: 'var(--font-color)' }} >Sign Up ?</Link>
 
             </form>
 

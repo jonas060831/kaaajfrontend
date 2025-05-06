@@ -96,6 +96,10 @@ const SignUpPage = () => {
 
         <div>
           <h1>Sign Up</h1>
+
+          <h6 style={{ marginTop: '-1rem'}} >
+            LED Partners Signup
+          </h6>
           
           
           
