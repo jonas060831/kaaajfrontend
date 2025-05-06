@@ -63,6 +63,8 @@ const AccountsLocationForm = () => {
   const [addressQuery, setAddressQuery] = useState("");
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   useEffect(() => {
     setAccountLocation(currentAccount?.location ?? null);
   }, [currentAccount]);
@@ -150,10 +152,15 @@ const AccountsLocationForm = () => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    setIsLoading(true)
     try {
       if (currentAccount) {
         const res = await updateAccountById(currentAccount._id, formData);
-        console.log(res);
+        
+        if(res) {
+          setIsLoading(false)
+          window.location.reload()
+        }
       }
     } catch (error) {
       console.error("Failed to update account:", error);
@@ -251,6 +258,7 @@ const AccountsLocationForm = () => {
           </div>
 
           <Button
+            isLoading={isLoading}
             type="submit"
             title="Save"
             icon={<Icon category="Check" width={24} height={24} />}
