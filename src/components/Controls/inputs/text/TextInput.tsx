@@ -10,9 +10,10 @@ type TextInputProps = {
   id: string;
   required?: boolean;
   validPattern?: RegExp;
+  inputMode?: "text" | "search" | "email" | "tel" | "url" | "none" | "numeric" | "decimal" | undefined
 }
 
-const TextInput:FC<TextInputProps> = ({ name, label, value, onChange, type = "text", id, required=false, validPattern }) => {
+const TextInput:FC<TextInputProps> = ({ name, label, value, onChange, type = "text", id, required=false, validPattern, inputMode="text" }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isValid, setIsValid] = useState(true)
 
@@ -52,6 +53,7 @@ const TextInput:FC<TextInputProps> = ({ name, label, value, onChange, type = "te
         className={styles.floating_input}
         required={required}
         style={{ borderColor: isValid ? 'unset' : 'red' }}
+        inputMode={inputMode}
       />
     </div>
   );

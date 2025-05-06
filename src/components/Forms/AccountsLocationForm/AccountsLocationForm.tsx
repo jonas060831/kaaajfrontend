@@ -36,7 +36,6 @@ const AccountsLocationForm = () => {
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    console.log(event.target.value)
     setFormData({...formData, [event.target.name]: event.target.value})
   }
 
@@ -53,7 +52,7 @@ const AccountsLocationForm = () => {
 
           <div className={styles.input_container_2_rows}>
             <TextInput
-              name="accountLocationAddressLine1"
+              name="addressLine1"
               id="accountLocationAddressLine1"
               label="Address Line 1"
               value={formData.addressLine1}
@@ -61,7 +60,7 @@ const AccountsLocationForm = () => {
             />
 
             <TextInput
-              name="accountLocationAddressLine2"
+              name="addressLine2"
               id="accountLocationAddressLine2"
               label="Address Line 2 / Apt. #"
               value={formData.addressLine2}
@@ -71,7 +70,7 @@ const AccountsLocationForm = () => {
 
           <div className={styles.input_container_2_rows}>
             <TextInput
-             name="accountLocationCity"
+             name="city"
              id="accountLocationCity"
              label="City"
              value={formData.city}
@@ -90,12 +89,13 @@ const AccountsLocationForm = () => {
 
           <div className={styles.input_container_2_rows}>
             <TextInput
-             type="tel"
              name="zipcode"
              id="zipcode"
              label="Zipcode"
              value={formData.zipcode}
              onChange={handleChange}
+             validPattern={/^\d{5}(-\d{4})?$/}
+             inputMode="numeric"
             />
           </div>
 
