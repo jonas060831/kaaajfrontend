@@ -30,7 +30,7 @@ const AccountsLocationForm = () => {
   useEffect(() => {
 
     setAccountLocation(currentAccount?.location)
-  }, [])
+  }, [accountLocation])
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
@@ -64,7 +64,8 @@ const AccountsLocationForm = () => {
   };
   
 
-  if(currentAccount?.location) return null
+  if (!currentAccount) return null;
+  if (currentAccount.location) return null;
 
   return (
     <div>
