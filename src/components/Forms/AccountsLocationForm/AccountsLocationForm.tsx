@@ -90,6 +90,7 @@ const AccountsLocationForm = () => {
 
           <div className={styles.input_container_2_rows}>
             <TextInput
+             type="tel"
              name="zipcode"
              id="zipcode"
              label="Zipcode"
