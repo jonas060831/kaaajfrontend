@@ -1,7 +1,10 @@
+import AccountsLocationForm from "../../components/Forms/AccountsLocationForm/AccountsLocationForm"
 
 const DashboardPage = () => {
   return (
-    <div>DashboardPage</div>
+    <div>
+        <AccountsLocationForm />
+    </div>
   )
 }
 
