@@ -19,6 +19,9 @@
     font-family: 'Varela Round';
 }
 
+.mobile_signup_link {
+    display: none;
+}
 
 
 /* Desktop only */
@@ -37,5 +40,8 @@
     }
     .container > :nth-child(2) {
         width: 70%;
-    } 
+    }
+    .mobile_signup_link {
+        display: block;
+    }
 }
