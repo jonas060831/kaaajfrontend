@@ -47,7 +47,15 @@ body {
   color: var(--font-color);
 }
 
-
+.container {
+  width: 850px;
+  background-color: var(--ui-background-color);
+  border-radius: 1rem;
+  margin: 0px auto;
+  margin-top: 5rem;
+  min-height: 70vh;
+  padding: 1rem;
+}
 
 /* Desktop only */
 @media (min-width: 821px) { }
