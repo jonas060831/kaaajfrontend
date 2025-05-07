@@ -49,7 +49,7 @@ const VideoOnView:FC<VideoOnViewProps> = ({ src, ...props }) => {
     >
       <source src={src} type="video/mp4" />
       Your browser does not support the video tag.
-</video>
+    </video>
   );
 }
 

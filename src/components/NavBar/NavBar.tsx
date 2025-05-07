@@ -22,6 +22,10 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false) /* mobile only */
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
+  const queryParams = new URLSearchParams(location.search)
+
+  const userRole = queryParams.get('userRole')
+
   const toggleRightMenu = () :void => setIsMenuOpen(!isMenuOpen) /* mobile only */
 
   const handleSignOut = () => {
@@ -60,7 +64,7 @@ const NavBar = () => {
                     {
                       pathname !== '/signup' ? (
                         <li >
-                          <NavLink to="/signup" className={styles.navbar_links}>
+                          <NavLink to={ userRole === "Industrialist" ? "/signup?userRole=Industrialist" : "/signup"} className={styles.navbar_links}>
                             <Icon category='SignUp' width={20} height={20}/>
                             Sign Up
                           </NavLink>
