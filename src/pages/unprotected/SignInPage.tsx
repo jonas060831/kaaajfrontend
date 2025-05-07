@@ -95,7 +95,7 @@ const SignInPage = () => {
               />
 
               <br /><br />
-              <Link className={styles.mobile_signup_link} to={userRole === 'Industrialist' ? "/signup?type=Industrialist" : "/signup"} style={{ color: 'var(--font-color)' }} >Sign Up ?</Link>
+              <Link className={styles.mobile_signup_link} to={userRole === 'Industrialist' ? "/signup?userRole=Industrialist&redirectUrl=/manager" : "/signup"} style={{ color: 'var(--font-color)' }} >Sign Up ?</Link>
 
             </form>
 

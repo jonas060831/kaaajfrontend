@@ -64,7 +64,7 @@ const NavBar = () => {
                     {
                       pathname !== '/signup' ? (
                         <li >
-                          <NavLink to={ userRole === "Industrialist" ? "/signup?userRole=Industrialist" : "/signup"} className={styles.navbar_links}>
+                          <NavLink to={ userRole === "Industrialist" ? "/signup?userRole=Industrialist&redirectUrl=/manager" : "/signup"} className={styles.navbar_links}>
                             <Icon category='SignUp' width={20} height={20}/>
                             Sign Up
                           </NavLink>

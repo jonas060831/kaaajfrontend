@@ -1,10 +1,10 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL || 'http://localhost:4000'}/api/auth`
 
-const signUp = async (formData: Record<any, any> )  => {
+const signUp = async (formData: Record<any, any>, role: string )  => {
 
     try {
         
-        formData.role = 'Guest'
+        formData.role = role
 
         formData.personal = {
             firstName : formData.firstName,

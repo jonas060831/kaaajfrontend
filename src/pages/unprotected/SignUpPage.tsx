@@ -31,15 +31,22 @@ const SignUpPage = () => {
   const queryParams = new URLSearchParams(search)
 
   const userRole = queryParams.get('userRole')
+  const redirectUrl = queryParams.get('redirectUrl')
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    
     setLoading(true)
+    
     try {
-        const response = await signUp(formData)
+        const response = await signUp(formData, userRole ?? 'Proprietor')
         
         setUser(response!)
-        navigate('/')
+
+        if(!redirectUrl) navigate('/')
+        
+        else navigate(redirectUrl)
+
         setFormData({
           firstName: '',
           middleName: '',
