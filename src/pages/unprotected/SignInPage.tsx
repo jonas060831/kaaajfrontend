@@ -24,6 +24,8 @@ const SignInPage = () => {
   const [error, setError] = useState<string | null>(null)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
+  const userRole = queryParams.get('userRole')
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFormData({...formData, [event.target.name]: event.target.value})
   }
@@ -62,7 +64,7 @@ const SignInPage = () => {
             <h1>Sign In</h1>
             
             <h6 style={{ marginTop: '-1rem'}} >
-              LED Partners Login
+              { userRole === 'Industrialist' ? 'Advertiser Sign In':  'LED Partners Sign In'}
             </h6>
             
             <form onSubmit={handleSubmit}>
@@ -93,7 +95,7 @@ const SignInPage = () => {
               />
 
               <br /><br />
-              <Link className={styles.mobile_signup_link} to="/signup" style={{ color: 'var(--font-color)' }} >Sign Up ?</Link>
+              <Link className={styles.mobile_signup_link} to={userRole === 'Industrialist' ? "/signup?userRole=Industrialist&redirectUrl=/manager" : "/signup"} style={{ color: 'var(--font-color)' }} >Sign Up ?</Link>
 
             </form>
 

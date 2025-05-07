@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { signUp } from "../../services/authService"
 import { useAuthContext } from "../../contexts/AuthContext"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 import styles from './SignInPage.module.css'
 import Button from "../../components/Controls/buttons/Button"
@@ -27,15 +27,26 @@ const SignUpPage = () => {
   
   const { setUser } = useAuthContext()
   const navigate = useNavigate()
+  const { search } = useLocation()
+  const queryParams = new URLSearchParams(search)
+
+  const userRole = queryParams.get('userRole')
+  const redirectUrl = queryParams.get('redirectUrl')
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    
     setLoading(true)
+    
     try {
-        const response = await signUp(formData)
+        const response = await signUp(formData, userRole ?? 'Proprietor')
         
         setUser(response!)
-        navigate('/')
+
+        if(!redirectUrl) navigate('/')
+        
+        else navigate(redirectUrl)
+
         setFormData({
           firstName: '',
           middleName: '',
@@ -98,7 +109,7 @@ const SignUpPage = () => {
           <h1>Sign Up</h1>
 
           <h6 style={{ marginTop: '-1rem'}} >
-            LED Partners Signup
+            {userRole  === 'Industrialist' ? 'Advertiser Sign Up' : 'LED Partners Signup'} 
           </h6>
           
           
