@@ -45,7 +45,7 @@ declare global {
 }
 
 const AccountsLocationForm = () => {
-  const { currentAccount } = useAuthContext();
+  const { currentAccount, user } = useAuthContext();
   const addressInputRef = useRef<HTMLInputElement>(null);
   const [accountLocation, setAccountLocation] = useState<LocationData | null>(null);
   const [formData, setFormData] = useState<FormData>({
@@ -57,7 +57,6 @@ const AccountsLocationForm = () => {
       zipcode: "",
     },
   });
-
   const [autocompleteResults, setAutocompleteResults] = useState<any[]>([]);
   const [_, setSelectedResult] = useState<string | null>(null);
   const [addressQuery, setAddressQuery] = useState("");
@@ -94,7 +93,7 @@ const AccountsLocationForm = () => {
     return () => {
       if (debounceTimer.current) clearTimeout(debounceTimer.current);
     };
-  }, []);
+  }, [user]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
@@ -171,7 +170,7 @@ const AccountsLocationForm = () => {
 
   return (
     <div>
-      <RequiredModal isOpen={!accountLocation?.addressLine1} title="Address is Required">
+      <RequiredModal isOpen={!accountLocation?.addressLine1 && user!.role === 'Proprietor'} title="Address is Required">
         <form onSubmit={handleSubmit}>
           <div className={styles.input_container_2_rows}>
             
