@@ -3,12 +3,14 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { useEffect, useRef, useState } from "react";
 
 import styles from './DisplaysLocatorMap.module.css'
+import { search } from "../../../../services/accountService";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN as string;
 
 const DisplaysLocatorMap = () => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map | null>(null);
+  const [displays, setDisplays] = useState([])
   const [startingLocationView] = useState<[number, number]>([-74.006, 40.7128]); // New York
 
   const [isDarkMode, setIsDarkMode] = useState(
@@ -59,17 +61,34 @@ const DisplaysLocatorMap = () => {
   useEffect(() => {
     if (!map) return;
 
+    updateMode()
+
+    pinDisplaysLocation()
+    
+  }, [isDarkMode]);
+
+  const updateMode = () => {
     const newStyle = isDarkMode
       ? import.meta.env.VITE_MAPBOX_DARKMODE_CSS as string
       : import.meta.env.VITE_MAPBOX_LIGHTMODE_CSS as string;
 
-    map.setStyle(newStyle);
+    map!.setStyle(newStyle);
 
-    map.once("style.load", () => {
+    map!.once("style.load", () => {
       console.log("Map style updated to:", isDarkMode ? "dark" : "light");
       // Re-add any custom markers/layers here if needed
     });
-  }, [isDarkMode]);
+  }
+
+  //fetch displays location and pin it to the map
+  const pinDisplaysLocation = async () => {
+
+    const res = await search('Proprietor')
+    setDisplays(res)
+
+    console.log(res)
+
+  }
 
   return (
     <div className={styles.map_wrapper}>

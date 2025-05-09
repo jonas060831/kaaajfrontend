@@ -23,6 +23,25 @@ const index = async () : Promise<void>=> {
     }
 }
 
+const search = async (query: string): Promise<any> => {
+
+  //im looking for all the business that updated their location and their role is Proprietor
+  //only apply the search if this is the specific value
+  if(query === 'Proprietor') {
+
+    try {
+
+      const res = await fetch(`${BASE_URL}/search?role=${query}`)
+
+      return res.json()
+
+    } catch (error: any) {
+      throw new Error(error.message)
+    }
+
+  }
+}
+
 const fetchAccounts = async (accountIds: string[]): Promise<any[]> => {
     try {
       const options = {
@@ -90,6 +109,7 @@ const updateAccountById = async (accountId: string, accountData: any): Promise<a
 
 export {
     index,
+    search,
     fetchAccounts,
     fetchAccountById,
     updateAccountById
