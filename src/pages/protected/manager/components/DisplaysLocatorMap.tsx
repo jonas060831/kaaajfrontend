@@ -10,7 +10,7 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN as string;
 const DisplaysLocatorMap = () => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map | null>(null);
-  const [displays, setDisplays] = useState([])
+  const [_, setDisplays] = useState([])
   const [startingLocationView] = useState<[number, number]>([-74.006, 40.7128]); // New York
 
   const [isDarkMode, setIsDarkMode] = useState(
@@ -19,7 +19,7 @@ const DisplaysLocatorMap = () => {
 
   // Detect color scheme changes
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
 
     if (mediaQuery.addEventListener) {
