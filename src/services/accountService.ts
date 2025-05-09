@@ -31,9 +31,15 @@ const search = async (query: string): Promise<any> => {
 
     try {
 
-      const res = await fetch(`${BASE_URL}/search?role=${query}`)
 
-      return res.json()
+      const options = {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        }
+      const res = await fetch(`${BASE_URL}/search?role=${query}`,options)
+      return await res.json()
 
     } catch (error: any) {
       throw new Error(error.message)

@@ -61,35 +61,68 @@ const DisplaysLocatorMap = () => {
   useEffect(() => {
     if (!map) return;
 
+    const updateMode = () => {
+      const newStyle = isDarkMode
+        ? import.meta.env.VITE_MAPBOX_DARKMODE_CSS as string
+        : import.meta.env.VITE_MAPBOX_LIGHTMODE_CSS as string;
+
+      map!.setStyle(newStyle);
+
+      map!.once("style.load", () => {
+        console.log("Map style updated to:", isDarkMode ? "dark" : "light");
+        // Re-add any custom markers/layers here if needed
+      });
+    }
+
     updateMode()
 
-    pinDisplaysLocation()
-    
   }, [isDarkMode]);
 
-  const updateMode = () => {
-    const newStyle = isDarkMode
-      ? import.meta.env.VITE_MAPBOX_DARKMODE_CSS as string
-      : import.meta.env.VITE_MAPBOX_LIGHTMODE_CSS as string;
+  //pins
+  useEffect(() => {
+    if(!map) return //dont run until map exist
 
-    map!.setStyle(newStyle);
+    let markers: mapboxgl.Marker[] = [];
 
-    map!.once("style.load", () => {
-      console.log("Map style updated to:", isDarkMode ? "dark" : "light");
-      // Re-add any custom markers/layers here if needed
-    });
-  }
 
-  //fetch displays location and pin it to the map
-  const pinDisplaysLocation = async () => {
+    //fetch displays location and pin it to the map
+    (async () => {
 
-    const res = await search('Proprietor')
-    setDisplays(res)
+      const res = await search("Proprietor")
+      setDisplays(res)
 
-    console.log(res)
+      
 
-  }
+      markers = res.map((proprietor:any) => {
+        const { location } = proprietor
+        new mapboxgl.Marker()
+          .setLngLat([location.longitude, location.latitude])
+          .addTo(map)
+      })
 
+      if(res.length > 0) {
+        const first = res[0].location
+
+        map.flyTo({
+          center: [first.longitude, first.latitude],
+          zoom: 18,
+          pitch: 60,       // tilt the map
+          bearing: -30,    // rotate the map
+          speed: 1.2,      // optional: slow down fly speed
+          curve: 1.8       // optional: flight curve
+        })
+      }
+
+    })()
+
+    return () => {
+      //only remove the markers you added
+      markers.forEach(m => m.remove())
+    }
+
+  }, [map])
+
+  
   return (
     <div className={styles.map_wrapper}>
       <div ref={mapContainerRef} className={styles.map_container} />
