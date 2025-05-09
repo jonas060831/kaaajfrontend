@@ -7,13 +7,14 @@ import IntroAd from "./components/IntroAd";
 import GoLive from "./components/GoLive";
 import SelectUploadFirstAd from "./components/SelectUploadFirstAd";
 import AvailableDisplays from "./components/AvailableDisplays";
+import DisplaysLocatorMap from "./components/DisplaysLocatorMap";
 
 const ManagerPage = () => {
   
   const [formData, setFormData] = useState({
     selectedDisplay: {}
   })
-  const { currentAccount } = useAuthContext();
+  const { currentAccount, user } = useAuthContext();
   const handleNextPageRef = useRef<() => void>(() => {});
 
   const callFunctionOne = () => {
@@ -29,12 +30,23 @@ const ManagerPage = () => {
     console.log(formData)
   }
 
-  const pages = useMemo(() => [
-    <IntroAd beginAd={callFunctionOne}/>,
-    <AvailableDisplays handleForm={handleSelectedDisplay}/>,
-    <SelectUploadFirstAd />,
-    <GoLive/>
-  ], []); // stable reference
+  const pages = useMemo(() => {
+    if(user!.role === 'Proprietor') {
+      return [
+        <IntroAd beginAd={callFunctionOne}/>,
+        <AvailableDisplays handleForm={handleSelectedDisplay}/>,
+        <SelectUploadFirstAd />,
+        <GoLive/>
+      ]
+    } else {
+      //
+      return [
+        <DisplaysLocatorMap />,
+        <>Once the location is selected show the screens available for that location to post Ads to with some metrics</>,
+        
+      ]
+    }
+  }, []); // stable reference
 
   if (!currentAccount) {
     return (
@@ -49,6 +61,7 @@ const ManagerPage = () => {
       {currentAccount.ads && currentAccount.ads.length > 0 ? (
         <>add more ads</>
       ) : (
+        //renders only if there is no Ads added yet
         <form onSubmit={handleSubmit}>
           <MultiPageContainer
             pages={pages}
@@ -56,7 +69,6 @@ const ManagerPage = () => {
             functionOne={(fn) => { handleNextPageRef.current = fn }}
           />
         </form>
-        
       )}
     </div>
   );
