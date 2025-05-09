@@ -7,7 +7,7 @@ import IntroAd from "./components/IntroAd";
 import GoLive from "./components/GoLive";
 import SelectUploadFirstAd from "./components/SelectUploadFirstAd";
 import AvailableDisplays from "./components/AvailableDisplays";
-import DisplaysLocatorMap from "./components/DisplayLocatorMap";
+import DisplaysLocatorMap from "./components/DisplaysLocatorMap";
 
 const ManagerPage = () => {
   
