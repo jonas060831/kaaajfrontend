@@ -39,7 +39,7 @@ const SignInPage = () => {
       const response = await signIn(formData)
       
       setUser(response)
-      
+
       if(!redirectUrl) navigate('/')
       else navigate(redirectUrl)
 
