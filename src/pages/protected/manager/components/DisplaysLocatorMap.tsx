@@ -117,7 +117,9 @@ const DisplaysLocatorMap = () => {
 
     return () => {
       //only remove the markers you added
-      markers.forEach(m => m.remove())
+      markers.forEach(m => {
+        if(m && typeof m.remove === 'function') m.remove()
+      })
     }
 
   }, [map])
