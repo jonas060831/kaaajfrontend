@@ -23,6 +23,7 @@ const SignUpPage = () => {
   })
   const [serverMessage, setServerMessage] = useState<null | string>()
   const [loading, setLoading] = useState<boolean>(false)
+  const [isDisabled, setIsDisabled] = useState(true)
 
   
   const { setUser } = useAuthContext()
@@ -77,7 +78,18 @@ const SignUpPage = () => {
     }
   }
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) :void => setFormData({...formData, [event.target.name] : event.target.value})
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) :void => {
+
+    const { name, value } = event.target
+
+    const updatedFormData = { ...formData, [name]: value }
+    setFormData(updatedFormData)
+
+    const { password, repeatpassword } = updatedFormData
+
+
+    password === repeatpassword && password.length !== 0 ? setIsDisabled(false) : setIsDisabled(true)
+  }
   return (
     <div className={styles.container} style={{ marginTop: '1.7rem' }}>
 
@@ -191,6 +203,7 @@ const SignUpPage = () => {
               title='Sign Up'
               type='submit'
               isLoading={loading}
+              isDisabled={isDisabled}
               icon={<Icon category="RightArrow" width={24} height={24}/> }
             />
 
