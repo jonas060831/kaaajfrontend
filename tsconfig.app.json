@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "emails"]
+  "include": ["src", "src/emails", "emails/test"]
 }

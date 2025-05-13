@@ -8,7 +8,7 @@ export default function Email() {
         href="https://example.com"
         style={{ background: "#000", color: "#fff", padding: "12px 20px" }}
       >
-        Click me
+        Click this button
       </Button>
     </Html>
   );
