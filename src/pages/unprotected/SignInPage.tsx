@@ -46,7 +46,7 @@ const SignInPage = () => {
       const html = renderToStaticMarkup(<TestEmail />)
 
       //route in the backend
-      await sendTestEmail()
+      await sendTestEmail(html)
 
       setUser(response)
 

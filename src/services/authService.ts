@@ -70,10 +70,15 @@ const signIn = async (formData: Record<any, string> ) => {
     }
 }
 
-const sendTestEmail = async () => {
+const sendTestEmail = async (testEmail:any) => {
 
     try {
-        const res = await fetch(`${BASE_URL}/test-email`)
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type' : 'application/json' },
+            body: JSON.stringify({testEmail})
+        }
+        const res = await fetch(`${BASE_URL}/test-email`, options)
 
         console.log(await res.json())
 
