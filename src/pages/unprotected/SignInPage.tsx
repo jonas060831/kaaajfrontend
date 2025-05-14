@@ -4,12 +4,15 @@ import TextInput from '../../components/Controls/inputs/text/TextInput'
 import styles from './SignInPage.module.css'
 import PasswordInput from '../../components/Controls/inputs/password/PasswordInput'
 import Icon from '../../components/Icon/Icon'
-import { signIn } from '../../services/authService'
+import { sendTestEmail, signIn } from '../../services/authService'
 import { useAuthContext } from '../../contexts/AuthContext'
 import { useLocation, useNavigate } from 'react-router'
 import DismissModal from '../../components/Modals/DismissModal'
 import CircleButton from '../../components/Controls/buttons/CircleButton'
 import { Link } from 'react-router-dom'
+import { renderToStaticMarkup } from 'react-dom/server';
+
+import TestEmail from '../../../emails/TestEmail'
 
 const SignInPage = () => {
 
@@ -38,8 +41,15 @@ const SignInPage = () => {
       const redirectUrl = queryParams.get('redirectUrl')
       const response = await signIn(formData)
       
+
+      //decide which email to send
+      const html = renderToStaticMarkup(<TestEmail />)
+
+      //route in the backend
+      await sendTestEmail(html)
+
       setUser(response)
-      
+
       if(!redirectUrl) navigate('/')
       else navigate(redirectUrl)
 

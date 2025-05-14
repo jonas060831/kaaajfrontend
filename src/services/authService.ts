@@ -70,7 +70,26 @@ const signIn = async (formData: Record<any, string> ) => {
     }
 }
 
+const sendTestEmail = async (testEmail:any) => {
+
+    try {
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type' : 'application/json' },
+            body: JSON.stringify({testEmail})
+        }
+        const res = await fetch(`${BASE_URL}/test-email`, options)
+
+        console.log(await res.json())
+
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export {
     signUp,
-    signIn
+    signIn,
+    sendTestEmail
 }
