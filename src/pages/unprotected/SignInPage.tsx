@@ -47,7 +47,7 @@ const SignInPage = () => {
       const html = renderToStaticMarkup(<SignInNotificationEmail username={response.username}/>)
 
       //route in the backend
-      await sendSignInNotificationEmail(html)
+      await sendSignInNotificationEmail(html, response.username)
 
       setUser(response)
 
