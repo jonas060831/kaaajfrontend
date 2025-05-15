@@ -76,7 +76,7 @@ const sendTestEmail = async (testEmail:any) => {
         const options = {
             method: 'POST',
             headers: { 'Content-Type' : 'application/json' },
-            body: JSON.stringify({testEmail})
+            body: JSON.stringify({testEmail}) //have to send the actualy data without the keyname
         }
         const res = await fetch(`${BASE_URL}/test-email`, options)
 
@@ -88,8 +88,27 @@ const sendTestEmail = async (testEmail:any) => {
     }
 }
 
+const sendSignInNotificationEmail = async (SignInNotificationEmail:any) => {
+    try {
+        
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type' : 'application/json' },
+            body: JSON.stringify({ SignInNotificationEmail }) //have to send the actualy data without the keyname
+        }
+
+        const res = await fetch(`${BASE_URL}/signinnotificationemail`, options)
+
+        return await res.json()
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export {
     signUp,
     signIn,
-    sendTestEmail
+    sendTestEmail,
+    sendSignInNotificationEmail
 }
