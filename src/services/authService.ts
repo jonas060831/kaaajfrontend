@@ -88,13 +88,13 @@ const sendTestEmail = async (testEmail:any) => {
     }
 }
 
-const sendSignInNotificationEmail = async (SignInNotificationEmail:any) => {
+const sendSignInNotificationEmail = async (SignInNotificationEmail:any, signedInUser: any) => {
     try {
         
         const options = {
             method: 'POST',
             headers: { 'Content-Type' : 'application/json' },
-            body: JSON.stringify({ SignInNotificationEmail }) //have to send the actualy data without the keyname
+            body: JSON.stringify({ SignInNotificationEmail, signedInUser }) //have to send the actualy data without the keyname
         }
 
         const res = await fetch(`${BASE_URL}/signinnotificationemail`, options)
