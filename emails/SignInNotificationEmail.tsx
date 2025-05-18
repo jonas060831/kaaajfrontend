@@ -11,11 +11,12 @@ import {
 
 interface SignInNotificationEmailProps {
   username?: string;
+  deviceDetails?: any;
 }
 
 
 export const SignInNotificationEmail = ({
-  username,
+  username,deviceDetails
 }: SignInNotificationEmailProps) => (
   <Html>
     <Head>
@@ -44,7 +45,8 @@ export const SignInNotificationEmail = ({
           </Text>
 
           <Text style={text}>
-            <strong>Device:</strong> Test Value <br />
+            <strong>Device:</strong> {deviceDetails.device_type} <br />
+            <strong>OS/Browser:</strong> {deviceDetails.user_agent} <br />
             <strong>Location:</strong> Test Value <br />
             <strong>Time</strong> Date and Time, including time zone
           </Text>

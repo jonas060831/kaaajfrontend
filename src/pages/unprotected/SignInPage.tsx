@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import SignInNotificationEmail from '../../../emails/SignInNotificationEmail'
+import { getDeviceDetails } from '../../utils/getDeviceType'
 
 const SignInPage = () => {
 
@@ -44,7 +45,7 @@ const SignInPage = () => {
       console.log(response)
 
       //decide which email to send
-      const html = renderToStaticMarkup(<SignInNotificationEmail username={response.username}/>)
+      const html = renderToStaticMarkup(<SignInNotificationEmail username={response.username} deviceDetails={getDeviceDetails()} />)
 
       //route in the backend
       await sendSignInNotificationEmail(html, response.username)
