@@ -9,13 +9,35 @@ import {
   Text,
 } from '@react-email/components';
 
-interface SignInNotificationEmailProps {
-  username?: string;
+interface DeviceDetails {
+  device_type?: string;
+  user_agent?: string;
 }
 
+interface Timestamp {
+  date?: string;
+  time?: string;
+  time_zone?: string;
+}
+
+interface ApproximateUserLocation {
+  city?: string;
+  region?: string;
+  country?: string;
+}
+
+interface SignInNotificationEmailProps {
+  username?: string;
+  deviceDetails?: DeviceDetails;
+  timestamp?: Timestamp;
+  approximateUserLocation?: ApproximateUserLocation;
+}
 
 export const SignInNotificationEmail = ({
   username,
+  deviceDetails,
+  timestamp,
+  approximateUserLocation,
 }: SignInNotificationEmailProps) => (
   <Html>
     <Head>
@@ -26,46 +48,51 @@ export const SignInNotificationEmail = ({
       </style>
     </Head>
     <Body style={main}>
-      <Preview>
-        Sign In Succesful
-      </Preview>
+      <Preview>Sign In Successful</Preview>
       <Container style={container}>
-        
-        <Text style={text_logo}>
-          KAAAJ Advertising
-        </Text>
+        <Text style={text_logo}>KAAAJ Advertising</Text>
 
         <Section style={section}>
           <Text style={text}>
-            Hi <strong>{username}</strong>!
+            Hi <strong>{username || 'User'}</strong>!
           </Text>
-          <Text style={text}>
-            We noticed a login to your account from a new device:
-          </Text>
+          <Text style={text}>We noticed a login to your account — is this you?</Text>
 
           <Text style={text}>
-            <strong>Device:</strong> Test Value <br />
-            <strong>Location:</strong> Test Value <br />
-            <strong>Time</strong> Date and Time, including time zone
+            <strong>Device:</strong> {deviceDetails?.device_type ?? 'Unknown'} <br />
+            <strong>OS/Browser:</strong> {deviceDetails?.user_agent ?? 'Unknown'} <br />
+            <strong>Proximity:</strong>{' '}
+            {approximateUserLocation
+              ? `${approximateUserLocation.city ?? 'Unknown'}, ${approximateUserLocation.region ?? 'Unknown'}, ${approximateUserLocation.country ?? 'Unknown'}`
+              : 'Unknown'}
+            <br />
+            <strong>Time:</strong>{' '}
+            {timestamp
+              ? `${timestamp.date ?? 'Unknown'} at ${timestamp.time ?? 'Unknown'}, ${timestamp.time_zone ?? 'Unknown'}`
+              : 'Unknown'}
           </Text>
 
           <Text style={text}>If this was you, no action is needed.</Text>
 
           <Text style={text}>
-            If you don’t recognize this activity, please secure your account immediately by resetting your password or <br />
+            If you don’t recognize this activity, please secure your account immediately by resetting your
+            password or <br />
             contacting our support team. <br />
             Your security is important to us.
           </Text>
-
         </Section>
+
         <Text style={links}>
-          <Link style={link}>Your security audit log</Link> ・{' '}
-          <Link style={link}>Contact support</Link>
+          <Link href="#" style={link} rel="noopener noreferrer">
+            Your security audit log
+          </Link>{' '}
+          ・{' '}
+          <Link href="#" style={link} rel="noopener noreferrer">
+            Contact support
+          </Link>
         </Text>
 
-        <Text style={footer}>
-          KAAAJ Advertisement,・123 STREET NAME ・CITY, STATE ZIP
-        </Text>
+        <Text style={footer}>KAAAJ Advertisement ・ 123 STREET NAME ・ CITY, STATE ZIP</Text>
       </Container>
     </Body>
   </Html>
@@ -73,6 +100,21 @@ export const SignInNotificationEmail = ({
 
 SignInNotificationEmail.PreviewProps = {
   username: 'John D',
+  deviceDetails: {
+    device_type: 'mobile',
+    user_agent: 'Safari on macOS',
+  },
+  approximateUserLocation: {
+    city: 'San Francisco',
+    state: 'California',
+    country: 'United States'
+  },
+  timestamp: {
+    date: '1991-08-05',
+    time: '20:07:06',
+    time_zone : 'GMT-7 (America/Los_Angeles)'
+  }
+  
 } as SignInNotificationEmailProps;
 
 export default SignInNotificationEmail;
@@ -80,8 +122,9 @@ export default SignInNotificationEmail;
 const text_logo = {
   fontFamily: 'Orbitron, sans-serif',
   fontSize: '22px',
-  margin: '50px 0px'
-}
+  margin: '50px 0px',
+};
+
 const main = {
   backgroundColor: '#ffffff',
   color: '#24292e',
@@ -95,7 +138,6 @@ const container = {
   padding: '20px 0 48px',
 };
 
-
 const section = {
   padding: '24px',
   border: 'solid 1px #dedede',
@@ -108,7 +150,6 @@ const text = {
   textAlign: 'left' as const,
 };
 
-
 const links = {
   textAlign: 'center' as const,
 };
@@ -116,6 +157,7 @@ const links = {
 const link = {
   color: '#0366d6',
   fontSize: '12px',
+  textDecoration: 'none',
 };
 
 const footer = {
