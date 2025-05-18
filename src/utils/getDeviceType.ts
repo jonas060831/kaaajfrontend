@@ -3,7 +3,7 @@ interface DeviceDetails {
   user_agent: string; // e.g., "Chrome on Windows"
 }
 
-export const getDeviceDetails = (): DeviceDetails => {
+export const getDeviceDetails = async(): Promise<DeviceDetails> => {
   const ua = navigator.userAgent;
 
   const isMobile = /Mobi|Android/i.test(ua);

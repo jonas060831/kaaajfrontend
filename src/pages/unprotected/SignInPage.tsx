@@ -15,6 +15,8 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import SignInNotificationEmail from '../../../emails/SignInNotificationEmail'
 import { getDeviceDetails } from '../../utils/getDeviceType'
 import { getCurrentDateTime } from '../../utils/getCurrentDateTime'
+import { getApproximateUserLocation } from '../../utils/getApproximateUserLocation'
+import { getPublicIP } from '../../utils/getPublicIp'
 
 const SignInPage = () => {
 
@@ -43,10 +45,23 @@ const SignInPage = () => {
       const redirectUrl = queryParams.get('redirectUrl')
       const response = await signIn(formData)
       
-      console.log(response)
+      const dummyIp = await getPublicIP()
+
+      const requestDetails = await getApproximateUserLocation(dummyIp!)
+
+      const deviceDetails = await getDeviceDetails()
+
+      console.log(requestDetails)
 
       //decide which email to send
-      const html = renderToStaticMarkup(<SignInNotificationEmail username={response.username} deviceDetails={getDeviceDetails()} timestamp={getCurrentDateTime()} />)
+      const html = renderToStaticMarkup(
+       <SignInNotificationEmail
+        username={response.username}
+        deviceDetails={deviceDetails}
+        timestamp={getCurrentDateTime()}
+        approximateUserLocation={requestDetails}
+       />
+      )
 
       //route in the backend
       await sendSignInNotificationEmail(html, response.username)
