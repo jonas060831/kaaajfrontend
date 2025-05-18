@@ -14,6 +14,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 
 import SignInNotificationEmail from '../../../emails/SignInNotificationEmail'
 import { getDeviceDetails } from '../../utils/getDeviceType'
+import { getCurrentDateTime } from '../../utils/getCurrentDateTime'
 
 const SignInPage = () => {
 
@@ -45,7 +46,7 @@ const SignInPage = () => {
       console.log(response)
 
       //decide which email to send
-      const html = renderToStaticMarkup(<SignInNotificationEmail username={response.username} deviceDetails={getDeviceDetails()} />)
+      const html = renderToStaticMarkup(<SignInNotificationEmail username={response.username} deviceDetails={getDeviceDetails()} timestamp={getCurrentDateTime()} />)
 
       //route in the backend
       await sendSignInNotificationEmail(html, response.username)

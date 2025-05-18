@@ -12,11 +12,12 @@ import {
 interface SignInNotificationEmailProps {
   username?: string;
   deviceDetails?: any;
+  timestamp?:any
 }
 
 
 export const SignInNotificationEmail = ({
-  username,deviceDetails
+  username,deviceDetails, timestamp
 }: SignInNotificationEmailProps) => (
   <Html>
     <Head>
@@ -48,7 +49,7 @@ export const SignInNotificationEmail = ({
             <strong>Device:</strong> {deviceDetails.device_type} <br />
             <strong>OS/Browser:</strong> {deviceDetails.user_agent} <br />
             <strong>Location:</strong> Test Value <br />
-            <strong>Time</strong> Date and Time, including time zone
+            <strong>Time</strong> {timestamp.date} and {timestamp.time}, {timestamp.time_zone}
           </Text>
 
           <Text style={text}>If this was you, no action is needed.</Text>
