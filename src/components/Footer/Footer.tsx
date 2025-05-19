@@ -66,6 +66,7 @@ export default function Footer() {
           <li><Link to="/developers" className={styles.link}>Developers</Link></li>
           <li><Link to="/hivemap" className={styles.link}>HiveMap™ Insights</Link></li>
           <li><Link to="/faq" className={styles.link}>FAQs</Link></li>
+          <li><Link to="/support" className={styles.link}>Support</Link></li>
         </ul>
 
         </div>
