@@ -15,6 +15,7 @@ import ManagerPage from './pages/protected/manager/ManagerPage';
 import AccountPage from './pages/protected/account/AccountPage';
 
 import { LoadScript } from '@react-google-maps/api';
+import SupportPage from './pages/unprotected/SupportPage';
 
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
                 <Route path='/signup' element={<SignUpPage />} />
                 <Route path='/signin' element={<SignInPage />} />
                 <Route path='/contact' element={<ContactPage />} />
+                <Route path='/support' element={<SupportPage /> }/>
               </>
             )
           }
